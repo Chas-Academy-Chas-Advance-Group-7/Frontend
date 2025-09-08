@@ -6,8 +6,10 @@ export const colors = {
 
   // Layout och bakgrunder
   background: '#FFFFFF',
-  greenCard: '#B4C9B6',
-  yellowCard: '#F2E19E',
+  greenCard: '#ECFBE8',
+  yellowCard: '#FBFBE8',
+  greenBorder: '#B4C9B6',
+  yellowBorder: '#F2E19E',
 
 
   //Knapp/icon
