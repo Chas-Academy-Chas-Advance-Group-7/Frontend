@@ -29,6 +29,6 @@ const styles = StyleSheet.create({
         height: "100%"
     },
     text: {
-        color: 'PrimaryColor',
+        color: colors.textPrimary,
     }
 })
