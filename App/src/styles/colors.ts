@@ -1,18 +1,16 @@
 export const colors = {
-  // Grundfärger  
-  primary: '#08519C',
-  secondary: '#191919',
-  base: '#FFFFFF',
-
+  // Textfärger
+  textPrimary: '#08519C',
+  textSecondary: '#191919',
+ 
 
   // Layout och bakgrunder
-  background: '#cefabf',
-  card: '#84ca6f',
-  headerBackground: ' #FCFFF5',
-  tabBackground: '#66c181',
+  background: '#FFFFFF',
+  greenCard: '#B4C9B6',
+  yellowCard: '#F2E19E',
 
 
-  //Knapp icon
+  //Knapp/icon
   buttonColorGrey: ' #8C8C8C',
   buttonColorGradiet: 'linear-gradient(90deg, #6BAED6 0%, #08519C 100%)',
 };
