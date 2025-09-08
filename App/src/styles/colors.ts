@@ -8,8 +8,11 @@ export const colors = {
   background: '#FFFFFF',
   greenCard: '#ECFBE8',
   yellowCard: '#FBFBE8',
+  redCard: '#FFDBD8',
   greenBorder: '#B4C9B6',
   yellowBorder: '#F2E19E',
+  redBorder: '#D79D97',
+
 
 
   //Knapp/icon
