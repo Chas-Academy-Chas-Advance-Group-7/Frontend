@@ -6,7 +6,7 @@ import Header from "./src/components/Header";
 export default function App() {
   return (
     <View style={styles.container}>
-      <Header />
+      <Header/>
       <GradientButton />
     </View>
   );

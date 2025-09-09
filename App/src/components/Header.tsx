@@ -2,7 +2,7 @@ import { StyleSheet, Image, View, Text } from 'react-native'
 import React from 'react'
 import { colors } from '../styles/colors'
 
-const HeroImage = () => {
+const Header = () => {
   return (
     <View style={styles.container}>
       <Image
@@ -17,25 +17,30 @@ const HeroImage = () => {
   )
 }
 
-export default HeroImage
+export default Header
 
 const styles = StyleSheet.create({
     container: {
-        width: "30%", 
-        height: 100,
+      position: "absolute",
+        top: 0,
+        left: 0,
+        right: 0,
+        paddingTop: 40,
+        paddingBottom: 12,
+        elevation: 4,
         alignItems: "center", 
         justifyContent: "center",
-        marginBottom: 20,
-       
+
     }, 
     image: {
-        width: "100%", 
-        height: "100%"
+        width: 80, 
+        height: 80,
+        marginRight: 10,
     },
     text: {
         color: colors.textPrimary,
         fontFamily: 'Roboto',
-        fontSize: 25,
+        fontSize: 20,
         fontWeight: 'bold',
     }
 })
