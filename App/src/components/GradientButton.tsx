@@ -23,10 +23,12 @@ export default GradientButton;
 const styles = StyleSheet.create({
   button: {
     padding: 10,
-    borderRadius: 5,
+    paddingHorizontal: 20,
+    borderRadius: 10,
     alignItems: "center",
   },
   buttonText: {
     color: "#fff",
+    fontWeight: 500,
   },
 });
