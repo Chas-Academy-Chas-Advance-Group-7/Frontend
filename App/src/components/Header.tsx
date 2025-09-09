@@ -21,8 +21,12 @@ export default HeroImage
 
 const styles = StyleSheet.create({
     container: {
-        width: "100%", 
-        height: 250
+        width: "30%", 
+        height: 100,
+        alignItems: "center", 
+        justifyContent: "center",
+        marginBottom: 20,
+       
     }, 
     image: {
         width: "100%", 
@@ -30,5 +34,8 @@ const styles = StyleSheet.create({
     },
     text: {
         color: colors.textPrimary,
+        fontFamily: 'Roboto',
+        fontSize: 25,
+        fontWeight: 'bold',
     }
 })
