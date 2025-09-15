@@ -35,7 +35,7 @@ export function AddButton() {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            zIndex: 1000,
+            zIndex: 2000,
           }}
         >
           <div
@@ -52,10 +52,12 @@ export function AddButton() {
             <h2 style={{ marginTop: 0 }}>Lägg till användare:</h2>
             <p>Här kommer det ett formulär sen</p>
             <div style={{ display: "flex", justifyContent: "flex-end", gap: "8px", marginTop: "20px" }}>
-              <Button variant="secondary" onClick={() => setOpen(false)}>
+              <Button onClick={() => setOpen(false)} background="#8C8C8C"
+  color="white">
                 Avbryt
               </Button>
-              <Button variant="primary" onClick={() => setOpen(false)}>
+              <Button onClick={() => setOpen(false)} background="linear-gradient(135deg, #06b6d4, #3b82f6)"
+  color="white">
                 Spara
               </Button>
             </div>

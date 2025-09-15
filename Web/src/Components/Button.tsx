@@ -3,10 +3,18 @@ import React from "react";
 type ButtonProps = {
   children: React.ReactNode;
   onClick?: () => void;
-  variant?: "primary" | "secondary"; 
+  background?: string;
+  color?: string;     
+  style?: React.CSSProperties; 
 };
 
-export function Button({ children, onClick, variant = "primary" }: ButtonProps) {
+export function Button({
+  children,
+  onClick,
+  background = "#08519C", 
+  color = "white",     
+  style,
+}: ButtonProps) {
   const baseStyle: React.CSSProperties = {
     padding: "8px 16px",
     borderRadius: "6px",
@@ -14,15 +22,12 @@ export function Button({ children, onClick, variant = "primary" }: ButtonProps) 
     cursor: "pointer",
     border: "none",
     fontFamily: "Inter, sans-serif",
-  };
-
-  const variants: Record<string, React.CSSProperties> = {
-    primary: { background: "#08519C", color: "white" },
-    secondary: { background: "#E5E7EB", color: "#111827" },
+    background,
+    color,
   };
 
   return (
-    <button onClick={onClick} style={{ ...baseStyle, ...variants[variant] }}>
+    <button onClick={onClick} style={{ ...baseStyle, ...style }}>
       {children}
     </button>
   );

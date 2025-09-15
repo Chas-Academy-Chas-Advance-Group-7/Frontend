@@ -1,14 +1,24 @@
 import React from "react";
 import { Header } from "./Components/Header";
-import { GradientButton } from "./Components/testbutton"; // 👈 importera
+import MapComponent from "./Components/mapContainer";
+import { Warnings } from "./Components/Warnings";
+import "./index.css";
+import { DeliveryTable } from "./Components/DeliveryTable";
 
 function App() {
   return (
     <div>
       <Header title="BlueRoute Logistics" />
-      <main style={{ padding: "1rem" }}>
-        <GradientButton />
-      </main>
+
+      <div className="main-layout">
+        <div className="left-panel">
+          <Warnings />
+        </div>
+        <div className="right-panel">
+          <MapComponent />
+        </div>
+      </div>
+      <DeliveryTable />
     </div>
   );
 }
