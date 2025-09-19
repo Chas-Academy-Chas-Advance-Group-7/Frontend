@@ -1,11 +1,19 @@
-import { StyleSheet, Text, View, Pressable } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  Pressable,
+  GestureResponderEvent,
+} from "react-native";
 import React from "react";
-import { colors } from "../styles/colors";
 import { LinearGradient } from "expo-linear-gradient";
 
-const GradientButton = () => {
+type GradientButtonProps = {
+  onPress: (event: GestureResponderEvent) => void;
+};
+
+const GradientButton: React.FC<GradientButtonProps> = ({ onPress }) => {
   return (
-    <Pressable>
+    <Pressable onPress={onPress}>
       <LinearGradient
         colors={["#6BAED6", "#08519C"]}
         start={{ x: 0, y: 0 }}

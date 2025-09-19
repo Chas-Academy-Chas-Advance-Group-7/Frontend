@@ -4,9 +4,13 @@ import GradientButton from "./src/components/GradientButton";
 import Header from "./src/components/Header";
 
 export default function App() {
+  const handlePress = async () => {
+    console.log("You pressed the button");
+  };
+
   return (
     <View style={styles.container}>
-      <GradientButton />
+      <GradientButton onPress={handlePress} />
       {/* <Header /> */}
     </View>
   );
