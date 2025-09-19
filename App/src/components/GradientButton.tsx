@@ -9,18 +9,24 @@ import { LinearGradient } from "expo-linear-gradient";
 
 type GradientButtonProps = {
   onPress: (event: GestureResponderEvent) => void;
+  title: string;
+  colors: [string, string, ...string[]];
 };
 
-const GradientButton: React.FC<GradientButtonProps> = ({ onPress }) => {
+const GradientButton: React.FC<GradientButtonProps> = ({
+  onPress,
+  title,
+  colors,
+}) => {
   return (
     <Pressable onPress={onPress}>
       <LinearGradient
-        colors={["#6BAED6", "#08519C"]}
+        colors={colors}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
         style={styles.button}
       >
-        <Text style={styles.buttonText}>Lägg till paket</Text>
+        <Text style={styles.buttonText}>{title}</Text>
       </LinearGradient>
     </Pressable>
   );
@@ -34,6 +40,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     borderRadius: 10,
     alignItems: "center",
+    width: 200,
+    margin: 5,
   },
   buttonText: {
     color: "#fff",
