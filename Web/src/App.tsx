@@ -1,24 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Header } from "./Components/Header";
+import MapComponent from "./Components/mapContainer";
+import { Warnings } from "./Components/Warnings";
+import "./index.css";
+import { DeliveryTable } from "./Components/DeliveryTable";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header title="BlueRoute Logistics" />
+
+      <div className="main-layout">
+        <div className="left-panel">
+          <Warnings />
+        </div>
+        <div className="right-panel">
+          <MapComponent />
+        </div>
+      </div>
+      <DeliveryTable />
     </div>
   );
 }
