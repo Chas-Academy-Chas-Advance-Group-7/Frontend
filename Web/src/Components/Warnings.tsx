@@ -16,11 +16,12 @@ export const Warnings: React.FC = () => {
       <h2 style={{ marginTop: 0, marginBottom: "12px", color: "#004080", justifyContent: "center", display: "flex" }}>
         Varningar
       </h2>
-      <ul style={{ listStyle: "none", margin: 0, padding: 0}}>
+      <ul style={{ listStyle: "none", margin: 0, padding: 0 }}>
         {warnings.map(w => (
           <li key={w.id} style={{
             padding: "8px 0",
-            borderBottom: "1px solid #eee",
+            display: "flex",
+            justifyContent: "center",
             color: w.level === "critical" 
               ? "red" 
               : w.level === "warning" 

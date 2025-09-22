@@ -1,0 +1,93 @@
+[
+    {
+        "paket_id": 1,
+        "trackingNumber": "444 333 22 SE",
+        "car": "FJX56X",
+        "driver": "Mikael Holm",
+        "status": "Levererad"
+    },
+    {
+        "paket_id": 2,
+        "trackingNumber": "444 333 22 SE",
+        "car": "PPC563",
+        "driver": "Sara Näsberg",
+        "status": "På väg"
+    },
+    {
+        "paket_id": 3,
+        "trackingNumber": "444 333 22 SE",
+        "car": "APC564",
+        "driver": "Viktoria Näsberg",
+        "status": "Försenad"
+    },
+    {
+        "paket_id": 1,
+        "trackingNumber": "444 333 22 SE",
+        "car": "FJX56X",
+        "driver": "Mikael Holm",
+        "status": "Levererad"
+    },
+    {
+        "paket_id": 2,
+        "trackingNumber": "444 333 22 SE",
+        "car": "PPC563",
+        "driver": "Sara Näsberg",
+        "status": "På väg"
+    },
+    {
+        "paket_id": 3,
+        "trackingNumber": "444 333 22 SE",
+        "car": "APC564",
+        "driver": "Viktoria Näsberg",
+        "status": "Försenad"
+    },
+    {
+        "paket_id": 1,
+        "trackingNumber": "444 333 22 SE",
+        "car": "FJX56X",
+        "driver": "Mikael Holm",
+        "status": "Levererad"
+    },
+    {
+        "paket_id": 2,
+        "trackingNumber": "444 333 22 SE",
+        "car": "PPC563",
+        "driver": "Sara Näsberg",
+        "status": "På väg"
+    },
+    {
+        "paket_id": 3,
+        "trackingNumber": "444 333 22 SE",
+        "car": "APC564",
+        "driver": "Viktoria Näsberg",
+        "status": "Försenad"
+    },
+    {
+        "paket_id": 3,
+        "trackingNumber": "444 333 22 SE",
+        "car": "APC564",
+        "driver": "Viktoria Näsberg",
+        "status": "Försenad"
+    },
+    {
+        "paket_id": 1,
+        "trackingNumber": "444 333 22 SE",
+        "car": "FJX56X",
+        "driver": "Mikael Holm",
+        "status": "Levererad"
+    },
+    {
+        "paket_id": 2,
+        "trackingNumber": "444 333 22 SE",
+        "car": "PPC563",
+        "driver": "Sara Näsberg",
+        "status": "På väg"
+    },
+    {
+        "paket_id": 6,
+        "trackingNumber": "444 333 22 SE",
+        "car": "APC564",
+        "driver": "Viktoria Näsberg",
+        "status": "Försenad"
+    }
+]
