@@ -3,22 +3,13 @@ import { StyleSheet, Text, View } from "react-native";
 import GradientButton from "./src/components/GradientButton";
 import Header from "./src/components/Header";
 import HeyDriver from "./src/components/HeyDriver";
+import AppNavigator from "./src/navigation/AppNavigator";
+import { UserProvider } from "./context/UserContext";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Header/>
-        {/* <HeyDriver username="Anna" truck="1" /> */}
-      <GradientButton />
-    </View>
+    <UserProvider>
+      <AppNavigator />
+    </UserProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
