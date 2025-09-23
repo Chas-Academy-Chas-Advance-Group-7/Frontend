@@ -44,6 +44,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: "#fff",
-    fontWeight: 500,
+    fontFamily: "InterSemiBold",
+    fontSize: 16,
   },
 });

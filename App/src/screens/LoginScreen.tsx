@@ -46,7 +46,13 @@ export default LoginScreen;
 
 const styles = StyleSheet.create({
   container: { flex: 1, justifyContent: "center", padding: 40 },
-  input: { borderWidth: 1, marginBottom: 12, padding: 8, borderRadius: 10 },
+  input: {
+    borderWidth: 1,
+    marginBottom: 12,
+    padding: 8,
+    borderRadius: 10,
+    fontFamily: "InterExtraLight",
+  },
   inputTitle: {
     fontSize: 20,
     fontWeight: "bold",
