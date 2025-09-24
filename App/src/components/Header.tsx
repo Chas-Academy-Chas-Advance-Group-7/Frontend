@@ -20,7 +20,7 @@ export default Header;
 const styles = StyleSheet.create({
   container: {
     position: "absolute",
-    top: 0,
+    top: 40,
     left: 0,
     right: 0,
     paddingTop: 40,
