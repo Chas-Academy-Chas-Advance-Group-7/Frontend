@@ -4,7 +4,6 @@ import {
   Bar,
   XAxis,
   YAxis,
-  CartesianGrid,
   Tooltip,
   ResponsiveContainer,
   Legend,
@@ -71,10 +70,9 @@ export const DeliveryChart: React.FC = () => {
   return (
     <div style={{ width: "50%", height: 300,
             justifyContent: "center",margin: "0 auto", }}>
-      <h3 style={{ display: "flex", justifyContent: "center"}}>Leveranser jämfört med förra året</h3>
+      <h3 style={{ display: "flex", justifyContent: "center", color:"#08519C"}}>Leveranser jämfört med förra året</h3>
       <ResponsiveContainer>
         <BarChart data={chartData} margin={{ top: 20, right: 20, left: 20, bottom: 20 }}>
-          <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="name" />
           <YAxis allowDecimals={false} />
           <Tooltip />

@@ -46,27 +46,6 @@
         "trackingNumber": "666 222 33 SE",
         "car": "QWE456",
         "driver": "Maria Lind",
-        "status": "Levererad"
-    },
-    {
-        "paket_id": 8,
-        "trackingNumber": "666 222 34 SE",
-        "car": "RTY654",
-        "driver": "Oskar Holmgren",
-        "status": "På väg"
-    },
-    {
-        "paket_id": 9,
-        "trackingNumber": "777 333 44 SE",
-        "car": "UIO321",
-        "driver": "Karin Dahl",
         "status": "Försenad"
-    },
-    {
-        "paket_id": 10,
-        "trackingNumber": "777 333 45 SE",
-        "car": "MNB432",
-        "driver": "Per Andersson",
-        "status": "På väg"
     }
 ]

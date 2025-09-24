@@ -10,10 +10,9 @@ export const Warnings: React.FC = () => {
   return (
     <div style={{
       backgroundColor: "#fff",
-      padding: "16px",
-      fontFamily: "Arial, sans-serif"
+      padding: "16px"
     }}>
-      <h2 style={{ marginTop: 0, marginBottom: "12px", color: "#004080", justifyContent: "center", display: "flex" }}>
+      <h2 style={{ marginTop: 0, marginBottom: "12px", color: "#08519C", justifyContent: "center", display: "flex" }}>
         Varningar
       </h2>
       <ul style={{ listStyle: "none", margin: 0, padding: 0 }}>
