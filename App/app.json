@@ -26,6 +26,13 @@
         {
           "fonts": "./node_modules/@expo-google-fonts/inter/900Black/Inter_900Black.ttf"
         }
+      ],
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Allow $(PRODUCT_NAME) to use your location.",
+          "isAndroidBackgroundLocationEnabled": true
+        }
       ]
     ]
   }

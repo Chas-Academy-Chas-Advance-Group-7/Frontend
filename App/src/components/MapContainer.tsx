@@ -3,19 +3,26 @@ import { StyleSheet, Text, View } from "react-native";
 import MapView from "react-native-maps";
 import { colors } from "../styles/colors";
 
-const MapContainer = () => {
+type MapContainerProps = {
+  latitude?: number;
+  longitude?: number;
+};
+
+const MapContainer: React.FC<MapContainerProps> = ({ latitude, longitude }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Följ leveransen</Text>
-      <MapView
-        style={styles.map}
-        // initialRegion={{
-        //   latitude: 5,
-        //   longitude: 5,
-        //   latitudeDelta: 0.05,
-        //   longitudeDelta: 0.05,
-        // }}
-      />
+      {latitude && longitude && (
+        <MapView
+          style={styles.map}
+          initialRegion={{
+            latitude,
+            longitude,
+            latitudeDelta: 2,
+            longitudeDelta: 2,
+          }}
+        />
+      )}
     </View>
   );
 };
