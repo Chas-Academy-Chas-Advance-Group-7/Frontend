@@ -20,24 +20,28 @@ const LoginScreen = () => {
   return (
     <View style={styles.container}>
       <Header />
-      <TextInput
-        placeholder="Användarnamn"
-        value={username}
-        onChangeText={setUsername}
-        style={styles.input}
-      />
-      <TextInput
-        placeholder="Lösenord"
-        value={password}
-        onChangeText={setPassword}
-        secureTextEntry
-        style={styles.input}
-      />
-      <GradientButton
-        colors={[colors.buttonGradientLeft, colors.buttonGradientRight]}
-        title="Logga in"
-        onPress={handleLogin}
-      />
+      <View style={styles.loginForm}>
+        <TextInput
+          placeholder="Användarnamn"
+          value={username}
+          onChangeText={setUsername}
+          style={styles.input}
+          autoCapitalize="none"
+        />
+        <TextInput
+          placeholder="Lösenord"
+          value={password}
+          onChangeText={setPassword}
+          secureTextEntry
+          style={styles.input}
+          autoCapitalize="none"
+        />
+        <GradientButton
+          colors={[colors.buttonGradientLeft, colors.buttonGradientRight]}
+          title="Logga in"
+          onPress={handleLogin}
+        />
+      </View>
     </View>
   );
 };
@@ -45,7 +49,10 @@ const LoginScreen = () => {
 export default LoginScreen;
 
 const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: "center", padding: 40 },
+  container: { flex: 1, padding: 40 },
+  loginForm: {
+    marginTop: 100,
+  },
   input: {
     borderWidth: 1,
     marginBottom: 12,

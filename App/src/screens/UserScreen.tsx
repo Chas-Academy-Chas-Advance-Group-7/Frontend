@@ -1,11 +1,13 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import Header from "../components/Header";
+import MapContainer from "../components/MapContainer";
 
 const UserScreen = () => {
   return (
     <View style={styles.container}>
       <Header />
+      <MapContainer />
     </View>
   );
 };
