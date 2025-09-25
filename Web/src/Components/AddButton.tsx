@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "./Button"
+import DriverForm from "./DriverForm";
 
 export function AddButton() {
   const [open, setOpen] = useState(false);
@@ -39,29 +40,36 @@ export function AddButton() {
           }}
         >
           <div
-            onClick={(e) => e.stopPropagation()}
-            style={{
-              background: "white",
-              padding: "2rem",
-              borderRadius: "50px",
-              minWidth: "90%",
-              maxWidth: "90%",
-              minHeight: "50%",
-            }}
-          >
-            <h2 style={{ marginTop: 0 }}>Lägg till användare:</h2>
-            <p>Här kommer det ett formulär sen</p>
-            <div style={{ display: "flex", justifyContent: "flex-end", gap: "8px", marginTop: "20px" }}>
-              <Button onClick={() => setOpen(false)} background="#8C8C8C"
-  color="white">
-                Avbryt
-              </Button>
-              <Button onClick={() => setOpen(false)} background="linear-gradient(135deg, #06b6d4, #3b82f6)"
-  color="white">
-                Spara
-              </Button>
-            </div>
-          </div>
+  onClick={(e) => e.stopPropagation()}
+  style={{
+    position: "relative", // <- viktigt för att "absolute" ska funka inuti
+    background: "white",
+    padding: "2rem",
+    borderRadius: "20px",
+    minWidth: "70%",
+    maxWidth: "70%",
+    minHeight: "50%",
+  }}
+>
+  {/* Stängningsknappen i hörnet */}
+  <button
+    onClick={() => setOpen(false)}
+    style={{
+      position: "absolute",
+      top: "1rem",
+      right: "1rem",
+      border: "none",
+      background: "transparent",
+      fontSize: "1.5rem",
+      cursor: "pointer",
+      color: "#08519C",
+    }}
+  >
+    ×
+  </button>
+
+  <DriverForm />
+</div>
         </div>
       )}
     </>
