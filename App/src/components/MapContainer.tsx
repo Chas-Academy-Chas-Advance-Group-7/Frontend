@@ -1,6 +1,6 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-import MapView from "react-native-maps";
+import { StyleSheet, Text, View, Image } from "react-native";
+import MapView, { Marker } from "react-native-maps";
 import { colors } from "../styles/colors";
 
 type MapContainerProps = {
@@ -21,7 +21,16 @@ const MapContainer: React.FC<MapContainerProps> = ({ latitude, longitude }) => {
             latitudeDelta: 0.5,
             longitudeDelta: 0.5,
           }}
-        />
+        >
+          <Marker coordinate={{ latitude, longitude }} />
+          <Marker coordinate={{ latitude: 62.382, longitude: 17.294 }}>
+            <Image
+              source={require("../assets/truck_logo.png")}
+              style={{ width: 50, height: 50 }}
+              resizeMode="contain"
+            />
+          </Marker>
+        </MapView>
       )}
     </View>
   );
