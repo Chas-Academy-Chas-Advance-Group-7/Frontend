@@ -4,7 +4,7 @@ import HeyDriver from "../components/HeyDriver";
 import Header from "../components/Header";
 import WarningCard from "../components/WarningCard";
 
-type WarningLevel = 'caution' | 'danger' | 'none';
+type WarningLevel = "caution" | "danger" | "none";
 
 interface WarningData {
   warningLevel: WarningLevel;
@@ -14,12 +14,13 @@ interface WarningData {
 
 const fakeData: WarningData[] = [
   {
-    warningLevel: 'caution',
-    message: 'Tempreraturen är aningen förhäjd men är fortfarande inom gränsvärdet, håll koll!',
+    warningLevel: "caution",
+    message:
+      "Tempreraturen är aningen förhäjd men är fortfarande inom gränsvärdet, håll koll!",
   },
   // {
   //   warningLevel: 'danger',
-  //   message: 'Temperaturen är förhävd, sänk farten och stanna om möjligt!', 
+  //   message: 'Temperaturen är förhävd, sänk farten och stanna om möjligt!',
   // },
   // {
   //   warningLevel: 'none',
@@ -27,17 +28,17 @@ const fakeData: WarningData[] = [
   // },
 ];
 
-
 const DriverScreen = () => {
   return (
-    <View>
+    <View style={styles.container}>
       <Header />
       <HeyDriver username="Anna" truck="XYZ123" />
-      {fakeData.map((item, index) =>(
-        <WarningCard 
-       key={index}
-       warningLevel={item.warningLevel}
-       message={item.message}/>
+      {fakeData.map((item, index) => (
+        <WarningCard
+          key={index}
+          warningLevel={item.warningLevel}
+          message={item.message}
+        />
       ))}
     </View>
   );
@@ -45,4 +46,6 @@ const DriverScreen = () => {
 
 export default DriverScreen;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: { flex: 1, padding: 40 },
+});
