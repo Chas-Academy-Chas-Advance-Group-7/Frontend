@@ -18,8 +18,8 @@ const MapContainer: React.FC<MapContainerProps> = ({ latitude, longitude }) => {
           initialRegion={{
             latitude,
             longitude,
-            latitudeDelta: 0.5,
-            longitudeDelta: 0.5,
+            latitudeDelta: 0.05,
+            longitudeDelta: 0.05,
           }}
         >
           <Marker coordinate={{ latitude, longitude }} />

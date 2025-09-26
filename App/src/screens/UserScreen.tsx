@@ -3,12 +3,19 @@ import { useState, useEffect } from "react";
 import Header from "../components/Header";
 import MapContainer from "../components/MapContainer";
 import * as Location from "expo-location";
+import TextButton from "../components/TextButton";
+import { colors } from "../styles/colors";
 
 const UserScreen = () => {
   const [location, setLocation] = useState<Location.LocationObject | null>(
     null
   );
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const [sendingView, setSendingView] = useState<boolean | undefined>(true);
+
+  const handleViewChange = () => {
+    setSendingView((prev) => !prev);
+  };
 
   useEffect(() => {
     const getCurrentLocation = async () => {
@@ -34,10 +41,37 @@ const UserScreen = () => {
   return (
     <View style={styles.container}>
       <Header />
-      <MapContainer
-        latitude={location?.coords.latitude}
-        longitude={location?.coords.longitude}
-      />
+      <View style={styles.buttonContainer}>
+        <TextButton
+          title="Utgående"
+          onPress={sendingView ? undefined : handleViewChange}
+          color={sendingView ? colors.textPrimary : colors.buttonColorGrey}
+          underline={sendingView}
+        />
+        <TextButton
+          title="Inkommande"
+          onPress={!sendingView ? undefined : handleViewChange}
+          color={!sendingView ? colors.textPrimary : colors.buttonColorGrey}
+          underline={!sendingView}
+        />
+      </View>
+      {sendingView ? (
+        <View>
+          {/* <Text>Utgående</Text> */}
+          <MapContainer
+            latitude={location?.coords.latitude}
+            longitude={location?.coords.longitude}
+          />
+        </View>
+      ) : (
+        <View>
+          {/* <Text>Inkommande</Text> */}
+          <MapContainer
+            latitude={location?.coords.latitude}
+            longitude={location?.coords.longitude}
+          />
+        </View>
+      )}
     </View>
   );
 };
@@ -45,5 +79,11 @@ const UserScreen = () => {
 export default UserScreen;
 
 const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: "center", padding: 40 },
+  container: { flex: 1, padding: 40 },
+  buttonContainer: {
+    flexDirection: "row",
+    justifyContent: "center",
+    marginBottom: 20,
+    width: 300,
+  },
 });
