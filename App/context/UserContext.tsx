@@ -6,6 +6,7 @@ type UserContextType = {
   userId: string | null;
   role: string | null;
   login: (username: string, password: string) => Promise<boolean>;
+  logout: () => void;
 };
 
 type UserProviderProps = {
@@ -17,6 +18,7 @@ const UserContext = createContext<UserContextType>({
   userId: null,
   role: null,
   login: async () => false,
+  logout: () => {},
 });
 
 export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
@@ -39,8 +41,14 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
     }
   };
 
+  const logout = async () => {
+    setUsername(null);
+    setUserId(null);
+    setRole(null);
+  };
+
   return (
-    <UserContext.Provider value={{ username, userId, role, login }}>
+    <UserContext.Provider value={{ username, userId, role, login, logout }}>
       {children}
     </UserContext.Provider>
   );
