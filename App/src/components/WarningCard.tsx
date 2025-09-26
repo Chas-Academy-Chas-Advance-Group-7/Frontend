@@ -10,19 +10,16 @@ interface WarningCardProps {
 }
 
 const WarningCard: React.FC<WarningCardProps> = ({ warningLevel, message }) => {
-  const getBackgroundColor = (level: WarningLevel) => {
+  const getColorsForLevel = (level: WarningLevel) => {
     switch (level) {
       case 'none':
-        return colors.greenCard,
-        colors.greenBorder;
+        return { backgroundColor: colors.greenCard, borderColor: colors.greenBorder };
       case 'caution':
-        return colors.yellowCard,
-        colors.yellowBorder;
+        return { backgroundColor: colors.yellowCard, borderColor: colors.yellowBorder };  
       case 'danger':
-        return colors.redCard,
-          colors.redBorder;
+        return { backgroundColor: colors.redCard, borderColor: colors.redBorder };
       default:
-        return colors.greenCard;
+        return { backgroundColor: colors.greenCard, borderColor: colors.greenBorder };
     }
   };
 
@@ -37,11 +34,11 @@ const WarningCard: React.FC<WarningCardProps> = ({ warningLevel, message }) => {
   //   }
   // };  
 
-  const backgroundColor = getBackgroundColor(warningLevel);
+  const cardColors = getColorsForLevel(warningLevel);
   // const icon = getIcon(warningLevel);
 
   return (
-    <View style={[styles.card, { backgroundColor }]}>
+    <View style={[styles.card, cardColors]}>
       <Text style={styles.message}>{message}</Text>
     </View>
   );
@@ -57,6 +54,8 @@ const styles = StyleSheet.create({
         padding: 20,
         justifyContent: 'center',
         alignItems: 'center',
+        borderWidth: 2,
+        borderColor: colors.greenBorder,
     },
     message: {  
         color: colors.textSecondary,

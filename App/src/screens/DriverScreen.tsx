@@ -17,14 +17,14 @@ const fakeData: WarningData[] = [
     warningLevel: 'caution',
     message: 'Tempreraturen är aningen förhäjd men är fortfarande inom gränsvärdet, håll koll!',
   },
-  {
-    warningLevel: 'danger',
-    message: 'Temperaturen är förhävd, sänk farten och stanna om möjligt!', 
-  },
-  {
-    warningLevel: 'none',
-    message: 'Temperaturen är normal, fortsätt köra som vanligt!',
-  },
+  // {
+  //   warningLevel: 'danger',
+  //   message: 'Temperaturen är förhävd, sänk farten och stanna om möjligt!', 
+  // },
+  // {
+  //   warningLevel: 'none',
+  //   message: 'Temperaturen är normal, fortsätt köra som vanligt!',
+  // },
 ];
 
 
