@@ -1,13 +1,44 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Image } from "react-native";
 import React from "react";
 import HeyDriver from "../components/HeyDriver";
 import Header from "../components/Header";
+import WarningCard from "../components/WarningCard";
+
+type WarningLevel = 'caution' | 'danger' | 'none';
+
+interface WarningData {
+  warningLevel: WarningLevel;
+  icon?: any;
+  message: string;
+}
+
+const fakeData: WarningData[] = [
+  {
+    warningLevel: 'caution',
+    message: 'Tempreraturen är aningen förhäjd men är fortfarande inom gränsvärdet, håll koll!',
+  },
+  {
+    warningLevel: 'danger',
+    message: 'Temperaturen är förhävd, sänk farten och stanna om möjligt!', 
+  },
+  {
+    warningLevel: 'none',
+    message: 'Temperaturen är normal, fortsätt köra som vanligt!',
+  },
+];
+
 
 const DriverScreen = () => {
   return (
     <View>
       <Header />
-      <HeyDriver username="driver" truck="XYZ123" />
+      <HeyDriver username="Anna" truck="XYZ123" />
+      {fakeData.map((item, index) =>(
+        <WarningCard 
+       key={index}
+       warningLevel={item.warningLevel}
+       message={item.message}/>
+      ))}
     </View>
   );
 };
