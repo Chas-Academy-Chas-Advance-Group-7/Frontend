@@ -10,12 +10,26 @@
       "year": 2020,
       "color": "Blue",
       "license_plate": "XYZ123"
-    } 
+    }
   },
   {
     "user_id": 2,
     "username": "user",
     "password": "123",
-    "role": "user"
+    "role": "user",
+    "packages": [
+      {
+        "package_id": 1,
+        "package_name": "Paket 1"
+      },
+      {
+        "package_id": 2,
+        "package_name": "Paket 2"
+      },
+      {
+        "package_id": 3,
+        "package_name": "Paket 3"
+      }
+    ]
   }
 ]

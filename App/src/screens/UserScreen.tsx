@@ -5,6 +5,7 @@ import MapContainer from "../components/MapContainer";
 import * as Location from "expo-location";
 import TextButton from "../components/TextButton";
 import { colors } from "../styles/colors";
+import PackageList from "../components/PackageList";
 
 const UserScreen = () => {
   const [location, setLocation] = useState<Location.LocationObject | null>(
@@ -62,6 +63,7 @@ const UserScreen = () => {
             latitude={location?.coords.latitude}
             longitude={location?.coords.longitude}
           />
+          <PackageList />
         </View>
       ) : (
         <View>
