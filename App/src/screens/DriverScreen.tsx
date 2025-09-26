@@ -1,10 +1,13 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
+import HeyDriver from "../components/HeyDriver";
+import Header from "../components/Header";
 
 const DriverScreen = () => {
   return (
     <View>
-      <Text>DriverScreen</Text>
+      <Header />
+      <HeyDriver username="driver" truck="XYZ123" />
     </View>
   );
 };

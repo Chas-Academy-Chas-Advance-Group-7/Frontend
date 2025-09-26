@@ -14,7 +14,9 @@ const HeyDriver = ({ username, truck }: { username: string; truck: string }) => 
         Hej, förare {username}! 
       </Text>
       <Text style={styles.textTruck}>
-        Du är uppkopplad mot lastbil {truck}
+        Du är uppkopplad
+        {'\n'}
+        mot lastbil {truck}.
       </Text>
     </View>
   );
@@ -29,22 +31,22 @@ const styles = StyleSheet.create({
         alignItems: "center", 
     }, 
     image: {
-        width: 50, 
-        height: 50,
+        width: 30,
+        height: 30,
         marginRight: 10,
     },
     textUsername: {
         color: colors.textPrimary,
-        fontFamily: 'Roboto',
-        fontSize: 20,
-        fontWeight: 'bold',
+        fontFamily: 'InterBold',
+        fontSize: 17,
+        marginTop: 10,
     },
 
 
     textTruck: {
         color: colors.textSecondary,
-        fontFamily: 'Roboto',
-        fontSize: 16,
-        fontWeight: 'bold',
+        fontFamily: 'InterSemiBold',
+        fontSize: 15,
+        marginTop: 10,
     }
 })

@@ -3,7 +3,14 @@
     "user_id": 1,
     "username": "driver",
     "password": "123",
-    "role": "driver"
+    "role": "driver",
+    "truck": {
+      "make": "Toyota",
+      "model": "Camry",
+      "year": 2020,
+      "color": "Blue",
+      "license_plate": "XYZ123"
+    } 
   },
   {
     "user_id": 2,
