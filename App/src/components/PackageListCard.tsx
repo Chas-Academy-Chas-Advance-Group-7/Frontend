@@ -9,7 +9,7 @@ const PackageListCard = ({
 }) => {
   return (
     <View style={styles.listItem}>
-      <Text>{packageItem.package_name}</Text>
+      <Text style={styles.listItemText}>{packageItem.package_name}</Text>
     </View>
   );
 };
@@ -20,8 +20,11 @@ const styles = StyleSheet.create({
   listItem: {
     borderRadius: 10,
     borderWidth: 1,
-    padding: 12,
+    padding: 15,
     margin: 5,
     borderColor: colors.textPrimary,
+  },
+  listItemText: {
+    fontFamily: "InterRegular",
   },
 });

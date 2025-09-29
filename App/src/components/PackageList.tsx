@@ -25,7 +25,7 @@ export default PackageList;
 const styles = StyleSheet.create({
   container: {
     width: 300,
-    marginTop: 40,
+    marginVertical: 50,
   },
   title: {
     fontFamily: "InterSemiBold",

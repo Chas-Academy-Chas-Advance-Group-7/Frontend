@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, ScrollView } from "react-native";
 import { useState, useEffect } from "react";
 import Header from "../components/Header";
 import MapContainer from "../components/MapContainer";
@@ -40,7 +40,7 @@ const UserScreen = () => {
   }
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <Header />
       <View style={styles.buttonContainer}>
         <TextButton
@@ -74,7 +74,7 @@ const UserScreen = () => {
           />
         </View>
       )}
-    </View>
+    </ScrollView>
   );
 };
 
