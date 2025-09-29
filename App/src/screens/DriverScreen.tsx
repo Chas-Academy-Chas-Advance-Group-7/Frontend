@@ -33,6 +33,7 @@ const DriverScreen = () => {
     <View style={styles.container}>
       <Header />
       <HeyDriver username="Anna" truck="XYZ123" />
+      <View>
       {fakeData.map((item, index) => (
         <WarningCard
           key={index}
@@ -40,6 +41,7 @@ const DriverScreen = () => {
           message={item.message}
         />
       ))}
+      </View>
     </View>
   );
 };

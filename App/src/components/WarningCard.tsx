@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image } from 'react-native'
+import { StyleSheet, Text, View, Image, ScrollView } from 'react-native'
 import React from 'react'
 import { colors } from '../styles/colors'
 
@@ -38,8 +38,10 @@ const WarningCard: React.FC<WarningCardProps> = ({ warningLevel, message }) => {
   // const icon = getIcon(warningLevel);
 
   return (
+    <View style={styles.container}>
     <View style={[styles.card, cardColors]}>
       <Text style={styles.message}>{message}</Text>
+    </View>
     </View>
   );
 };
@@ -47,15 +49,21 @@ const WarningCard: React.FC<WarningCardProps> = ({ warningLevel, message }) => {
 export default WarningCard
 
 const styles = StyleSheet.create({
+
+  container: {
+    flex: 1,
+    marginTop: 20,
+    justifyContent: "center", 
+    alignItems: "center"
+  },
     card: {
         height: 193,
         width: '70%',
         borderRadius: 20,
         padding: 20,
-        justifyContent: 'center',
-        alignItems: 'center',
         borderWidth: 2,
-        borderColor: colors.greenBorder,
+        alignItems: 'center', 
+        justifyContent: 'center',
     },
     message: {  
         color: colors.textSecondary,
