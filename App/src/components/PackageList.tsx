@@ -13,6 +13,7 @@ const PackageList = () => {
       <Text style={styles.title}>Dina paket</Text>
       <FlatList
         data={packages}
+        scrollEnabled={false}
         keyExtractor={(item) => item.package_id.toString()}
         renderItem={({ item }) => <PackageListCard packageItem={item} />}
       />
