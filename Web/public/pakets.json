@@ -11,14 +11,14 @@
         "trackingNumber": "444 333 23 SE",
         "car": "PPC563",
         "driver": "Sara Näsberg",
-        "status": "På väg"
+        "status": "Under transport"
     },
     {
         "paket_id": 3,
         "trackingNumber": "444 333 24 SE",
         "car": "APC564",
         "driver": "Viktoria Näsberg",
-        "status": "Försenad"
+        "status": "Sen leverans"
     },
     {
         "paket_id": 4,
@@ -32,20 +32,20 @@
         "trackingNumber": "555 111 23 SE",
         "car": "LMN123",
         "driver": "Anna Svensson",
-        "status": "På väg"
+        "status": "Under transport"
     },
     {
         "paket_id": 6,
         "trackingNumber": "555 111 24 SE",
         "car": "JKL987",
         "driver": "Erik Larsson",
-        "status": "Försenad"
+        "status": "Sen leverans"
     },
     {
         "paket_id": 7,
         "trackingNumber": "666 222 33 SE",
         "car": "QWE456",
         "driver": "Maria Lind",
-        "status": "Försenad"
+        "status": "Sen leverans"
     }
 ]

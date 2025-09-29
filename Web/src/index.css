@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: "Inter", sans-serif;
+  font-family: Inter, sans-serif;
 }
 
 .delivery-section {
@@ -12,7 +12,6 @@ body {
   background-color: #fff;
   border-radius: 12px;
   padding: 20px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
 .delivery-table {
@@ -49,12 +48,12 @@ body {
   color: green;
 }
 
-.status.på-väg {
+.status.under-transport {
   color: #1a73e8;
 }
 
-.status.försenad {
-  color: red;
+.status.sen-leverans {
+  color: #ef0202;
 }
 
 .main-layout {
@@ -96,7 +95,7 @@ body {
 
 .driver-form h2 {
   margin-bottom: 1rem;
-  color: #003366;
+  color: #036;
 }
 
 .form-group {
@@ -153,5 +152,5 @@ body {
 .success-message {
   margin-top: 1rem;
   font-weight: bold;
-  color: rgb(0, 0, 0);
+  color: #000;
 }
