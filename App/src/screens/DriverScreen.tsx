@@ -3,6 +3,8 @@ import React from "react";
 import HeyDriver from "../components/HeyDriver";
 import Header from "../components/Header";
 import WarningCard from "../components/WarningCard";
+import Warningheadline from "../components/Warningheadline";
+
 
 type WarningLevel = "caution" | "danger" | "none";
 
@@ -13,19 +15,19 @@ interface WarningData {
 }
 
 const fakeData: WarningData[] = [
-  {
-    warningLevel: "caution",
-    message:
-      "Temperaturen är aningen förhöjd men är fortfarande inom gränsvärdet, håll koll!",
-  },
+  // {
+  //   warningLevel: "caution",
+  //   message:
+  //     "Temperaturen är aningen förhöjd men är fortfarande inom gränsvärdet, håll koll!",
+  // },
   // {
   //   warningLevel: 'danger',
   //   message: 'Temperaturen är förhävd, sänk farten och stanna om möjligt!',
   // },
-  // {
-  //   warningLevel: 'none',
-  //   message: 'Temperaturen är normal, fortsätt köra som vanligt!',
-  // },
+  {
+    warningLevel: 'none',
+    message: 'Du har ingar varningar.     ',
+  },
 ];
 
 const DriverScreen = () => {
@@ -33,6 +35,7 @@ const DriverScreen = () => {
     <View style={styles.container}>
       <Header />
       <HeyDriver username="Anna" truck="XYZ123" />
+      <Warningheadline />
       {fakeData.map((item, index) => (
         <WarningCard
           key={index}
