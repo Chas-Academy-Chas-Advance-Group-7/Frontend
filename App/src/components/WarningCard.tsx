@@ -35,23 +35,24 @@ const WarningCard: React.FC<WarningCardProps> = ({ warningLevel, message }) => {
     }
   };
 
-  // const getIcon = (level: WarningLevel) => {
-  //   switch (level) {
-  //     case 'none':
-  //     return require('../assets/Check_circle.png');
-  //     case 'caution':
-  //       return require('../assets/Alert_circle_yellow.png');
-  //       case 'danger':
-  //       return require('../assets/Alert_circle_red.png');
-  //   }
-  // };
+  const getIcon = (level: WarningLevel) => {
+    switch (level) {
+      case 'none':
+      return require('../assets/green_cirkle.png');
+      case 'caution':
+        return require('../assets/yellow_cirkle.png');
+        case 'danger':
+        return require('../assets/red_cirkle.png');
+    }
+  };
 
   const cardColors = getColorsForLevel(warningLevel);
-  // const icon = getIcon(warningLevel);
+  const icon = getIcon(warningLevel);
 
   return (
     <View style={styles.container}>
       <View style={[styles.card, cardColors]}>
+        <Image source={icon} style={[styles.image, icon]} />
         <Text style={styles.message}>{message}</Text>
       </View>
     </View>
@@ -72,6 +73,11 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     alignItems: "center",
     justifyContent: "center",
+  },
+  image: {
+    width: 40,
+    height: 40,
+    marginBottom: 20,
   },
   message: {
     color: colors.textSecondary,
