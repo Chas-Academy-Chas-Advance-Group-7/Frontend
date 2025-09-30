@@ -16,7 +16,7 @@ const fakeData: WarningData[] = [
   {
     warningLevel: "caution",
     message:
-      "Tempreraturen är aningen förhäjd men är fortfarande inom gränsvärdet, håll koll!",
+      "Temperaturen är aningen förhöjd men är fortfarande inom gränsvärdet, håll koll!",
   },
   // {
   //   warningLevel: 'danger',
@@ -33,7 +33,6 @@ const DriverScreen = () => {
     <View style={styles.container}>
       <Header />
       <HeyDriver username="Anna" truck="XYZ123" />
-      <View>
       {fakeData.map((item, index) => (
         <WarningCard
           key={index}
@@ -41,7 +40,6 @@ const DriverScreen = () => {
           message={item.message}
         />
       ))}
-      </View>
     </View>
   );
 };
