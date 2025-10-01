@@ -37,8 +37,7 @@ const styles = StyleSheet.create({
         marginTop: 30,
         marginBottom: 30,
         width: 300,
-        height: 200,
-        flex: 1,
+        height: '50%'
     },
 });                
 
