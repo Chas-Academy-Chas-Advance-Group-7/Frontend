@@ -20,19 +20,23 @@
     "packages": [
       {
         "package_id": 1,
-        "package_name": "Paket 1"
+        "package_name": "Paket 1",
+        "package_temp": 2
       },
       {
         "package_id": 2,
-        "package_name": "Paket 2"
+        "package_name": "Paket 2",
+        "package_temp": 4
       },
       {
         "package_id": 3,
-        "package_name": "Paket 3"
+        "package_name": "Paket 3",
+        "package_temp": 6
       },
       {
         "package_id": 4,
-        "package_name": "Paket 4"
+        "package_name": "Paket 4",
+        "package_temp": 8
       }
     ]
   }

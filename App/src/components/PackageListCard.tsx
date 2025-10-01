@@ -1,16 +1,30 @@
-import { StyleSheet, Text, View } from "react-native";
-import React from "react";
+import { StyleSheet, Text, View, Modal, Pressable } from "react-native";
+import React, { useState } from "react";
 import { colors } from "../styles/colors";
 
 const PackageListCard = ({
   packageItem,
 }: {
-  packageItem: { package_id: number; package_name: string };
+  packageItem: {
+    package_id: number;
+    package_name: string;
+    package_temp: number;
+  };
 }) => {
+  const [modalVisible, setModalVisible] = useState<boolean | undefined>(false);
+
   return (
-    <View style={styles.listItem}>
+    <Pressable style={styles.listItem} onPress={() => setModalVisible(true)}>
       <Text style={styles.listItemText}>{packageItem.package_name}</Text>
-    </View>
+      <Modal transparent={false} visible={modalVisible}>
+        <View style={styles.modalContainer}>
+          <Text>{packageItem.package_temp}</Text>
+          <Pressable onPress={() => setModalVisible(false)}>
+            <Text>Gå tillbaka</Text>
+          </Pressable>
+        </View>
+      </Modal>
+    </Pressable>
   );
 };
 
@@ -26,5 +40,10 @@ const styles = StyleSheet.create({
   },
   listItemText: {
     fontFamily: "InterRegular",
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
