@@ -51,14 +51,16 @@ export default LoginScreen;
 const styles = StyleSheet.create({
   container: { flex: 1, padding: 40 },
   loginForm: {
-    marginTop: 100,
+    marginTop: 80,
   },
   input: {
     borderWidth: 1,
-    marginBottom: 12,
+    marginTop: 10,
     padding: 8,
     borderRadius: 10,
     fontFamily: "InterExtraLight",
+    width: 300,
+    alignSelf: "center",
   },
   inputTitle: {
     fontSize: 20,

@@ -10,12 +10,38 @@
       "year": 2020,
       "color": "Blue",
       "license_plate": "XYZ123"
-    } 
+    }
   },
   {
     "user_id": 2,
     "username": "user",
     "password": "123",
-    "role": "user"
+    "role": "user",
+    "packages": [
+      {
+        "package_id": 1,
+        "package_name": "Paket 1",
+        "package_temp": 2,
+        "package_humidity": 4
+      },
+      {
+        "package_id": 2,
+        "package_name": "Paket 2",
+        "package_temp": 4,
+        "package_humidity": 8
+      },
+      {
+        "package_id": 3,
+        "package_name": "Paket 3",
+        "package_temp": 6,
+        "package_humidity": 12
+      },
+      {
+        "package_id": 4,
+        "package_name": "Paket 4",
+        "package_temp": 8,
+        "package_humidity": 16
+      }
+    ]
   }
 ]

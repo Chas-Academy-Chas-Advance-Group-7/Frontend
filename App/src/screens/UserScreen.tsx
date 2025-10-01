@@ -1,10 +1,11 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, ScrollView } from "react-native";
 import { useState, useEffect } from "react";
 import Header from "../components/Header";
 import MapContainer from "../components/MapContainer";
 import * as Location from "expo-location";
 import TextButton from "../components/TextButton";
 import { colors } from "../styles/colors";
+import PackageList from "../components/PackageList";
 
 const UserScreen = () => {
   const [location, setLocation] = useState<Location.LocationObject | null>(
@@ -39,7 +40,7 @@ const UserScreen = () => {
   }
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <Header />
       <View style={styles.buttonContainer}>
         <TextButton
@@ -62,6 +63,7 @@ const UserScreen = () => {
             latitude={location?.coords.latitude}
             longitude={location?.coords.longitude}
           />
+          <PackageList />
         </View>
       ) : (
         <View>
@@ -72,7 +74,7 @@ const UserScreen = () => {
           />
         </View>
       )}
-    </View>
+    </ScrollView>
   );
 };
 
