@@ -73,7 +73,7 @@ const DriverScreen = () => {
       ))}
       <GradientButton
       colors={[colors.buttonGradientLeft, colors.buttonGradientRight]}
-      title="Skanna QR-kod" 
+      title="Skanna paket" 
       onPress={handleScanPress} 
       />
     </View>
