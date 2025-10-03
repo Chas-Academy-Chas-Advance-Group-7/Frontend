@@ -17,7 +17,7 @@
     "username": "user",
     "password": "123",
     "role": "user",
-    "packages": [
+    "sending": [
       {
         "package_id": 1,
         "package_name": "Paket 1",
@@ -39,6 +39,32 @@
       {
         "package_id": 4,
         "package_name": "Paket 4",
+        "package_temp": 8,
+        "package_humidity": 16
+      }
+    ],
+    "receiving": [
+      {
+        "package_id": 1,
+        "package_name": "Paket 5",
+        "package_temp": 2,
+        "package_humidity": 4
+      },
+      {
+        "package_id": 2,
+        "package_name": "Paket 6",
+        "package_temp": 4,
+        "package_humidity": 8
+      },
+      {
+        "package_id": 3,
+        "package_name": "Paket 7",
+        "package_temp": 6,
+        "package_humidity": 12
+      },
+      {
+        "package_id": 4,
+        "package_name": "Paket 8",
         "package_temp": 8,
         "package_humidity": 16
       }

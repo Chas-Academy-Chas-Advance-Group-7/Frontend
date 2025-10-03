@@ -4,13 +4,20 @@ import PackageListCard from "./PackageListCard";
 import users from "../assets/users.json";
 import { colors } from "../styles/colors";
 
-const user = users.find((user) => user.role === "user");
-const packages = user?.packages || [];
+const PackageList = ({ route }: { route: string }) => {
+  const user = users.find((user) => user.role === "user");
+  let packages = [];
+  if (route === "sending") {
+    packages = user?.sending || [];
+  } else {
+    packages = user?.receiving || [];
+  }
 
-const PackageList = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Dina paket</Text>
+      <Text style={styles.title}>
+        {route === "sending" ? "Dina utgående paket" : "Dina inkommande paket"}
+      </Text>
       <FlatList
         data={packages}
         scrollEnabled={false}

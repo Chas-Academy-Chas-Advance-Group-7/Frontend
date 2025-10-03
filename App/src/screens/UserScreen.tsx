@@ -63,7 +63,7 @@ const UserScreen = () => {
             latitude={location?.coords.latitude}
             longitude={location?.coords.longitude}
           />
-          <PackageList />
+          <PackageList route="sending" />
         </View>
       ) : (
         <View>
@@ -72,6 +72,7 @@ const UserScreen = () => {
             latitude={location?.coords.latitude}
             longitude={location?.coords.longitude}
           />
+          <PackageList route="receiving" />
         </View>
       )}
     </ScrollView>
