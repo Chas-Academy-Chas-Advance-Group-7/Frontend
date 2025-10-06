@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, ScrollView } from "react-native";
+import { StyleSheet, Image, View, ScrollView } from "react-native";
 import { useState, useEffect } from "react";
 import Header from "../components/Header";
 import MapContainer from "../components/MapContainer";
@@ -61,7 +61,10 @@ const UserScreen = () => {
       </View>
       {sendingView ? (
         <View>
-          {/* <Text>Utgående</Text> */}
+          <Image
+            source={require("../assets/sending_icon.png")}
+            style={styles.icon}
+          />
           <MapContainer
             latitude={location?.coords.latitude}
             longitude={location?.coords.longitude}
@@ -75,7 +78,10 @@ const UserScreen = () => {
         </View>
       ) : (
         <View>
-          {/* <Text>Inkommande</Text> */}
+          <Image
+            source={require("../assets/receiving_icon.png")}
+            style={styles.icon}
+          />
           <MapContainer
             latitude={location?.coords.latitude}
             longitude={location?.coords.longitude}
@@ -101,5 +107,11 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     marginBottom: 20,
     width: 300,
+  },
+  icon: {
+    alignSelf: "center",
+    height: 30,
+    width: 30,
+    marginVertical: 15,
   },
 });
