@@ -49,12 +49,14 @@ const UserScreen = () => {
           onPress={sendingView ? undefined : handleViewChange}
           color={sendingView ? colors.textPrimary : colors.buttonColorGrey}
           underline={sendingView}
+          active={sendingView}
         />
         <TextButton
           title="Inkommande"
           onPress={!sendingView ? undefined : handleViewChange}
           color={!sendingView ? colors.textPrimary : colors.buttonColorGrey}
           underline={!sendingView}
+          active={!sendingView}
         />
       </View>
       {sendingView ? (

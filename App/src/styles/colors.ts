@@ -17,5 +17,4 @@ export const colors = {
   buttonColorGradient: "linear-gradient(90deg, #6BAED6 0%, #08519C 100%)",
   buttonGradientLeft: "#6BAED6",
   buttonGradientRight: "#08519C",
-  
 };
