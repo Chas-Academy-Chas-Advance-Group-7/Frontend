@@ -37,12 +37,12 @@ const WarningCard: React.FC<WarningCardProps> = ({ warningLevel, message }) => {
 
   const getIcon = (level: WarningLevel) => {
     switch (level) {
-      case 'none':
-      return require('../assets/green_cirkle.png');
-      case 'caution':
-        return require('../assets/yellow_cirkle.png');
-        case 'danger':
-        return require('../assets/red_cirkle.png');
+      case "none":
+        return require("../assets/green_cirkle.png");
+      case "caution":
+        return require("../assets/yellow_cirkle.png");
+      case "danger":
+        return require("../assets/red_cirkle.png");
     }
   };
 
@@ -70,18 +70,20 @@ const styles = StyleSheet.create({
     width: 300,
     borderRadius: 20,
     padding: 40,
+    paddingBottom: 50,
     borderWidth: 2,
     alignItems: "center",
     justifyContent: "center",
   },
   image: {
-    width: 40,
-    height: 40,
-    marginBottom: 20,
+    width: 25,
+    height: 25,
+    marginBottom: 15,
   },
   message: {
     color: colors.textSecondary,
     fontFamily: "InterSemiBold",
     fontSize: 16,
+    textAlign: "center",
   },
 });

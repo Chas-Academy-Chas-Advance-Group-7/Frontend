@@ -6,6 +6,7 @@ import * as Location from "expo-location";
 import TextButton from "../components/TextButton";
 import { colors } from "../styles/colors";
 import PackageList from "../components/PackageList";
+import WarningCard from "../components/WarningCard";
 
 const UserScreen = () => {
   const [location, setLocation] = useState<Location.LocationObject | null>(
@@ -63,6 +64,11 @@ const UserScreen = () => {
             latitude={location?.coords.latitude}
             longitude={location?.coords.longitude}
           />
+          <WarningCard
+            key={1}
+            warningLevel="none"
+            message="Du har ingar varningar."
+          />
           <PackageList route="sending" />
         </View>
       ) : (
@@ -71,6 +77,11 @@ const UserScreen = () => {
           <MapContainer
             latitude={location?.coords.latitude}
             longitude={location?.coords.longitude}
+          />
+          <WarningCard
+            key={1}
+            warningLevel="caution"
+            message="Temperaturen är aningen förhöjd, men fortfarande inom gränsvärdet."
           />
           <PackageList route="receiving" />
         </View>
