@@ -1,7 +1,8 @@
-import { StyleSheet, Text, View, Modal, Pressable, Image } from "react-native";
+import { StyleSheet, Text, Pressable, Animated } from "react-native";
 import { useState } from "react";
 import { colors } from "../styles/colors";
 import PackageModal from "./PackageModal";
+import useAnimation from "../hooks/useAnimation";
 
 const PackageListCard = ({
   packageItem,
@@ -14,15 +15,32 @@ const PackageListCard = ({
   };
 }) => {
   const [modalVisible, setModalVisible] = useState<boolean>(false);
+  const { opacityValue, fadeIn, fadeOut } = useAnimation();
 
   return (
-    <Pressable style={styles.listItem} onPress={() => setModalVisible(true)}>
-      <Text style={styles.listItemText}>{packageItem.package_name}</Text>
-      <PackageModal
-      packageItem={packageItem}
-      modalVisible={modalVisible}
-      setModalVisible={setModalVisible}
-      />
+    <Pressable
+      onPress={() => setModalVisible(true)}
+      onPressIn={fadeIn}
+      onPressOut={fadeOut}
+    >
+      <Animated.View
+        style={[
+          styles.listItem,
+          {
+            opacity: opacityValue.interpolate({
+              inputRange: [0, 0.5],
+              outputRange: [1, 0.5],
+            }),
+          },
+        ]}
+      >
+        <Text style={styles.listItemText}>{packageItem.package_name}</Text>
+        <PackageModal
+          packageItem={packageItem}
+          modalVisible={modalVisible}
+          setModalVisible={setModalVisible}
+        />
+      </Animated.View>
     </Pressable>
   );
 };
