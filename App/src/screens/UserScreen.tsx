@@ -68,6 +68,8 @@ const UserScreen = () => {
           <MapContainer
             latitude={location?.coords.latitude}
             longitude={location?.coords.longitude}
+            truckLatitude={62.382}
+            truckLongitude={17.294}
           />
           <WarningCard
             key={1}
@@ -85,6 +87,8 @@ const UserScreen = () => {
           <MapContainer
             latitude={location?.coords.latitude}
             longitude={location?.coords.longitude}
+            truckLatitude={62.398}
+            truckLongitude={17.324}
           />
           <WarningCard
             key={1}

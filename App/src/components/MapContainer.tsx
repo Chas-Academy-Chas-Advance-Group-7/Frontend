@@ -6,9 +6,16 @@ import { colors } from "../styles/colors";
 type MapContainerProps = {
   latitude?: number;
   longitude?: number;
+  truckLatitude?: number;
+  truckLongitude?: number;
 };
 
-const MapContainer: React.FC<MapContainerProps> = ({ latitude, longitude }) => {
+const MapContainer: React.FC<MapContainerProps> = ({
+  latitude,
+  longitude,
+  truckLatitude,
+  truckLongitude,
+}) => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Följ leveransen</Text>
@@ -23,13 +30,20 @@ const MapContainer: React.FC<MapContainerProps> = ({ latitude, longitude }) => {
           }}
         >
           <Marker coordinate={{ latitude, longitude }} />
-          <Marker coordinate={{ latitude: 62.382, longitude: 17.294 }}>
-            <Image
-              source={require("../assets/truck_logo.png")}
-              style={{ width: 50, height: 50 }}
-              resizeMode="contain"
-            />
-          </Marker>
+          {truckLatitude && truckLongitude && (
+            <Marker
+              coordinate={{
+                latitude: truckLatitude,
+                longitude: truckLongitude,
+              }}
+            >
+              <Image
+                source={require("../assets/truck_logo.png")}
+                style={{ width: 50, height: 50 }}
+                resizeMode="contain"
+              />
+            </Marker>
+          )}
         </MapView>
       )}
     </View>
