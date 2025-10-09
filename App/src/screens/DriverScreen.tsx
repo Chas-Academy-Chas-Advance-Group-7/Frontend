@@ -6,9 +6,12 @@ import Warningheadline from "../components/Warningheadline";
 import { useCameraPermissions } from "expo-camera";
 import QRCodeScanner from "../components/QRCodeScanner";
 import { ScrollView } from "react-native-gesture-handler";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import GradientButton from "../components/GradientButton";
 import { colors } from "../styles/colors";
+import * as Location from "expo-location";
+import DriverMapContainer from "../components/DriverMapContainer";
+import users from "../assets/users.json";
 
 type WarningLevel = "caution" | "danger" | "none";
 
@@ -29,8 +32,8 @@ const fakeData: WarningData[] = [
   //   message: 'Temperaturen är förhävd, sänk farten och stanna om möjligt!',
   // },
   {
-    warningLevel: 'none',
-    message: 'Du har ingar varningar.',
+    warningLevel: "none",
+    message: "Du har ingar varningar.",
   },
 ];
 
@@ -40,43 +43,83 @@ const DriverScreen = () => {
   const [showScanner, setShowScanner] = useState(false);
 
   const handleScanPress = async () => {
-  if (!isPermissionGranted) {
-    const permission = await requestPermission();
-    if (!permission.granted) return;
-  }
+    if (!isPermissionGranted) {
+      const permission = await requestPermission();
+      if (!permission.granted) return;
+    }
     setShowScanner(true);
   };
+
+  const [location, setLocation] = useState<Location.LocationObject | null>(
+    null
+  );
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
+
+  const user = users.find((user) => user.role === "driver");
+  let packages = user?.packages;
+
+  useEffect(() => {
+    const getCurrentLocation = async () => {
+      let { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== "granted") {
+        setErrorMsg("Permission to access location was denied");
+        return;
+      }
+      let location = await Location.getCurrentPositionAsync({});
+      setLocation(location);
+    };
+
+    getCurrentLocation();
+  }, []);
+
+  let text = "Waiting...";
+  if (errorMsg) {
+    text = errorMsg;
+  } else if (location) {
+    text = JSON.stringify(location);
+  }
 
   if (showScanner) {
     return (
       <View style={styles.container}>
         <QRCodeScanner />
-        <GradientButton  colors={[colors.buttonGradientLeft, colors.buttonGradientRight]}
-        title="Stäng kamera" 
-        onPress={() => setShowScanner(false)} />
+        <GradientButton
+          colors={[colors.buttonGradientLeft, colors.buttonGradientRight]}
+          title="Stäng kamera"
+          onPress={() => setShowScanner(false)}
+        />
       </View>
     );
   }
 
   return (
     <ScrollView>
-    <View style={styles.container}>
-      <Header />
-      <HeyDriver username="Anna" truck="XYZ123" />
-      <Warningheadline />
-      {fakeData.map((item, index) => (
-        <WarningCard
-          key={index}
-          warningLevel={item.warningLevel}
-          message={item.message}
+      <View style={styles.container}>
+        <Header />
+        <HeyDriver username="Anna" truck="XYZ123" />
+        <DriverMapContainer
+          latitude={location?.coords.latitude}
+          longitude={location?.coords.longitude}
+          deliveryPoints={packages?.map((pkg) => ({
+            id: String(pkg.package_id),
+            latitude: pkg.package_latitude,
+            longitude: pkg.package_longitude,
+          }))}
         />
-      ))}
-      <GradientButton
-      colors={[colors.buttonGradientLeft, colors.buttonGradientRight]}
-      title="Skanna paket" 
-      onPress={handleScanPress} 
-      />
-    </View>
+        <Warningheadline />
+        {fakeData.map((item, index) => (
+          <WarningCard
+            key={index}
+            warningLevel={item.warningLevel}
+            message={item.message}
+          />
+        ))}
+        <GradientButton
+          colors={[colors.buttonGradientLeft, colors.buttonGradientRight]}
+          title="Skanna paket"
+          onPress={handleScanPress}
+        />
+      </View>
     </ScrollView>
   );
 };
@@ -84,15 +127,14 @@ const DriverScreen = () => {
 export default DriverScreen;
 
 const styles = StyleSheet.create({
-  container: { 
-    flex: 1, 
-    padding: 40 
+  container: {
+    flex: 1,
+    padding: 40,
   },
   permission: {
     fontFamily: "InterRegular",
     fontSize: 16,
     marginBottom: 10,
-    textAlign: 'center',
-  }
+    textAlign: "center",
+  },
 });
-                                           
