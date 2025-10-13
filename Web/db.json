@@ -1,0 +1,20 @@
+{
+  "drivers": [
+    {
+      "id": "1",
+      "truck_id": 101,
+      "name": "Anna Karlsson",
+      "email": "anna.karlsson@example.com",
+      "password": "secret123",
+      "location": "Stockholm"
+    },
+    {
+      "id": "34d3",
+      "truck_id": 1,
+      "name": "Hanna Kindholm",
+      "email": "Hannakindholm@hotmail.com",
+      "password": "Test123",
+      "location": "Sverige"
+    }
+  ]
+}

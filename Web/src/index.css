@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: "Inter", sans-serif;
+  font-family: Inter, sans-serif;
 }
 
 .delivery-section {
@@ -12,7 +12,6 @@ body {
   background-color: #fff;
   border-radius: 12px;
   padding: 20px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
 .delivery-table {
@@ -49,12 +48,12 @@ body {
   color: green;
 }
 
-.status.på-väg {
+.status.under-transport {
   color: #1a73e8;
 }
 
-.status.försenad {
-  color: red;
+.status.sen-leverans {
+  color: #ef0202;
 }
 
 .main-layout {
@@ -70,4 +69,88 @@ body {
 
 .right-panel {
   flex: 1;
+}
+
+.driver-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100%;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.driver-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.driver-form {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.driver-form h2 {
+  margin-bottom: 1rem;
+  color: #036;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+}
+
+.form-group input {
+  padding: 0.5rem;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  font-size: 0.95rem;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #545b62;
+}
+
+.success-message {
+  margin-top: 1rem;
+  font-weight: bold;
+  color: #000;
 }

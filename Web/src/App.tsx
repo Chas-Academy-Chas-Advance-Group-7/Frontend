@@ -4,6 +4,7 @@ import MapComponent from "./Components/mapContainer";
 import { Warnings } from "./Components/Warnings";
 import "./index.css";
 import { DeliveryTable } from "./Components/DeliveryTable";
+import { DeliveryChart } from "./Components/DeliveryChart"; 
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         </div>
       </div>
       <DeliveryTable />
+      <DeliveryChart /> 
     </div>
   );
 }
