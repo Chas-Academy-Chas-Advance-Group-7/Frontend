@@ -18,7 +18,8 @@
         "package_temp": 2,
         "package_humidity": 4,
         "package_latitude": 62.362,
-        "package_longitude": 17.274
+        "package_longitude": 17.274,
+        "package_delivery_address": "Storgatan 11, 32145, Sundsvall"
       },
       {
         "package_id": 2,
@@ -26,7 +27,8 @@
         "package_temp": 4,
         "package_humidity": 8,
         "package_latitude": 62.398,
-        "package_longitude": 17.324
+        "package_longitude": 17.324,
+        "package_delivery_address": "Lillgatan 23, 32145, Sundsvall"
       },
       {
         "package_id": 3,
@@ -34,7 +36,8 @@
         "package_temp": 6,
         "package_humidity": 12,
         "package_latitude": 62.352,
-        "package_longitude": 17.354
+        "package_longitude": 17.354,
+        "package_delivery_address": "Mellangatan 2, 32145, Sundsvall"
       },
       {
         "package_id": 4,
@@ -42,7 +45,8 @@
         "package_temp": 8,
         "package_humidity": 16,
         "package_latitude": 62.422,
-        "package_longitude": 17.374
+        "package_longitude": 17.374,
+        "package_delivery_address": "Storgatan 18, 32145, Sundsvall"
       }
     ]
   },
@@ -56,25 +60,29 @@
         "package_id": 1,
         "package_name": "Paket 1",
         "package_temp": 2,
-        "package_humidity": 4
+        "package_humidity": 4,
+        "package_delivery_address": "Storgatan 11, 32145, Sundsvall"
       },
       {
         "package_id": 2,
         "package_name": "Paket 2",
         "package_temp": 4,
-        "package_humidity": 8
+        "package_humidity": 8,
+        "package_delivery_address": "Lillgatan 23, 32145, Sundsvall"
       },
       {
         "package_id": 3,
         "package_name": "Paket 3",
         "package_temp": 6,
-        "package_humidity": 12
+        "package_humidity": 12,
+        "package_delivery_address": "Mellangatan 2, 32145, Sundsvall"
       },
       {
         "package_id": 4,
         "package_name": "Paket 4",
         "package_temp": 8,
-        "package_humidity": 16
+        "package_humidity": 16,
+        "package_delivery_address": "Storgatan 18, 32145, Sundsvall"
       }
     ],
     "receiving": [
@@ -82,25 +90,29 @@
         "package_id": 1,
         "package_name": "Paket 5",
         "package_temp": 2,
-        "package_humidity": 4
+        "package_humidity": 4,
+        "package_delivery_address": "Storgatan 11, 32145, Sundsvall"
       },
       {
         "package_id": 2,
         "package_name": "Paket 6",
         "package_temp": 4,
-        "package_humidity": 8
+        "package_humidity": 8,
+        "package_delivery_address": "Lillgatan 23, 32145, Sundsvall"
       },
       {
         "package_id": 3,
         "package_name": "Paket 7",
         "package_temp": 6,
-        "package_humidity": 12
+        "package_humidity": 12,
+        "package_delivery_address": "Storgatan 18, 32145, Sundsvall"
       },
       {
         "package_id": 4,
         "package_name": "Paket 8",
         "package_temp": 8,
-        "package_humidity": 16
+        "package_humidity": 16,
+        "package_delivery_address": "Storgatan 18, 32145, Sundsvall"
       }
     ]
   }
