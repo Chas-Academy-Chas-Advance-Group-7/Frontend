@@ -16,5 +16,19 @@
       "password": "Test123",
       "location": "Sverige"
     }
+  ],
+  "packages": [
+    {
+      "id": "1",
+      "temperature": "15°C",
+      "humidity": "60%",
+      "status": "In Transit"
+    },
+    {
+      "id": "2",
+      "temperature": "5°C",
+      "humidity": "80%",
+      "status": "Delivered"
+    }
   ]
 }

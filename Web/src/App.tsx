@@ -13,7 +13,7 @@ function App() {
 
       <div className="main-layout">
         <div className="left-panel">
-          <Warnings />
+          <Warnings packagesUrl="http://localhost:3001/packages" />
         </div>
         <div className="right-panel">
           <MapComponent />
