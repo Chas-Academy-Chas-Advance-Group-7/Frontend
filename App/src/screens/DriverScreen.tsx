@@ -12,6 +12,7 @@ import { colors } from "../styles/colors";
 import * as Location from "expo-location";
 import DriverMapContainer from "../components/DriverMapContainer";
 import users from "../assets/users.json";
+import PackageList from "../components/PackageList";
 
 type WarningLevel = "caution" | "danger" | "none";
 
@@ -119,6 +120,7 @@ const DriverScreen = () => {
           title="Skanna paket"
           onPress={handleScanPress}
         />
+        <PackageList route="all" role="driver" />
       </View>
     </ScrollView>
   );

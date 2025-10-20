@@ -12,6 +12,7 @@ const PackageListCard = ({
     package_name: string;
     package_temp: number;
     package_humidity: number;
+    package_delivery_address?: string;
   };
 }) => {
   const [modalVisible, setModalVisible] = useState<boolean>(false);
@@ -34,7 +35,8 @@ const PackageListCard = ({
           },
         ]}
       >
-        <Text style={styles.listItemText}>{packageItem.package_name}</Text>
+        <Text style={styles.listItemName}>{packageItem.package_name}</Text>
+        <Text style={styles.listItemAddress}>{packageItem.package_delivery_address}</Text>
         <PackageModal
           packageItem={packageItem}
           modalVisible={modalVisible}
@@ -55,8 +57,15 @@ const styles = StyleSheet.create({
     margin: 5,
     borderColor: colors.textPrimary,
   },
-  listItemText: {
+  listItemName: {
     fontFamily: "InterRegular",
     fontSize: 16,
+    color: colors.textPrimary,
+  },
+  listItemAddress: {
+    fontFamily: "InterExtraLight",
+    fontSize: 14,
+    marginTop: 5,
+    color: colors.textSecondary,
   },
 });

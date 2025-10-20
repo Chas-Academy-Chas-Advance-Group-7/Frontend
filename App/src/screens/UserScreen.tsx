@@ -76,7 +76,7 @@ const UserScreen = () => {
             warningLevel="none"
             message="Du har ingar varningar."
           />
-          <PackageList route="sending" />
+          <PackageList route="sending" role="user" />
         </View>
       ) : (
         <View>
@@ -95,7 +95,7 @@ const UserScreen = () => {
             warningLevel="caution"
             message="Temperaturen är aningen förhöjd, men fortfarande inom gränsvärdet."
           />
-          <PackageList route="receiving" />
+          <PackageList route="receiving" role="user" />
         </View>
       )}
     </ScrollView>
