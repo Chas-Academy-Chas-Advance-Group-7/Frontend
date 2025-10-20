@@ -62,4 +62,5 @@ jobs:
         with:
           app-name: 'blueroute'
           slot-name: 'Production'
-          package: .
+          package: ./Web
+
