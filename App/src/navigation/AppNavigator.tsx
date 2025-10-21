@@ -12,6 +12,23 @@ const AppNavigator = () => {
   const { username } = useUser();
   const { role } = useUser();
 
+  //   return (
+  //     <NavigationContainer>
+  //       <Stack.Navigator screenOptions={{ headerShown: false }}>
+  //         {!username ? (
+  //           <>
+  //             <Stack.Screen name="LoginScreen" component={LoginScreen} />
+  //           </>
+  //         ) : role === "driver" ? (
+  //           <Stack.Screen name="DriverScreen" component={DriverScreen} />
+  //         ) : (
+  //           <Stack.Screen name="UserScreen" component={UserScreen} />
+  //         )}
+  //       </Stack.Navigator>
+  //     </NavigationContainer>
+  //   );
+  // };
+
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
@@ -19,8 +36,6 @@ const AppNavigator = () => {
           <>
             <Stack.Screen name="LoginScreen" component={LoginScreen} />
           </>
-        ) : role === "driver" ? (
-          <Stack.Screen name="DriverScreen" component={DriverScreen} />
         ) : (
           <Stack.Screen name="UserScreen" component={UserScreen} />
         )}

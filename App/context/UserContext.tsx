@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState } from "react";
-import { apiLogin } from "../src/api/api";
+import { testUserLogin } from "../src/api/api";
 
 type UserContextType = {
   username: string | null;
@@ -26,13 +26,14 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
   const [userId, setUserId] = useState<string | null>(null);
   const [role, setRole] = useState<string | null>(null);
 
-  const login = async (username: string, password: string) => {
+  const login = async (email: any, password: any) => {
     try {
-      const user = await apiLogin(username, password);
+      const user = await testUserLogin(email, password);
       if (user) {
-        setUsername(user.username ?? null);
-        setUserId(user.user_id?.toString() ?? null);
-        setRole(user.role ?? null);
+        setUsername("test");
+        // setUsername(user.username ?? null);
+        // setUserId(user.user_id?.toString() ?? null);
+        // setRole(user.role ?? null);
         return true;
       }
       return false;
