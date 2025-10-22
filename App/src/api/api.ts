@@ -23,7 +23,7 @@ import * as SecureStore from "expo-secure-store";
 const baseUrl =
   "https://express-api7-f6auegdrc4b0fheg.swedencentral-01.azurewebsites.net";
 
-export const testUserLogin = async (email: any, password: any) => {
+export const testUserLogin = async (email: string, password: string) => {
   try {
     const response = await fetch(`${baseUrl}/login_portal/user_login/login`, {
       method: "POST",
@@ -35,16 +35,43 @@ export const testUserLogin = async (email: any, password: any) => {
 
     const data = await response.json();
 
-    if (response.ok) {
+    if (response.ok && data?.token) {
       console.log("Received token: ", data.token);
       await SecureStore.setItemAsync("token", data.token);
       // const decoded = jwtDecode(data.token);
-      return { success: true };
+      return true;
     } else {
-      return { success: false };
+      return false;
     }
   } catch (error) {
     console.error(error);
+    return false;
+  }
+};
+
+export const testDriverLogin = async (email: string, password: string) => {
+  try {
+    const response = await fetch(`${baseUrl}/login_portal/driver_login/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, password }),
+    });
+
+    const data = await response.json();
+
+    if (response.ok && data?.token) {
+      console.log("Received token: ", data.token);
+      await SecureStore.setItemAsync("token", data.token);
+      // const decoded = jwtDecode(data.token);
+      return true;
+    } else {
+      return false;
+    }
+  } catch (error) {
+    console.error(error);
+    return false;
   }
 };
 

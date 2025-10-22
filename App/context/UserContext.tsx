@@ -1,11 +1,13 @@
 import React, { createContext, useContext, useState } from "react";
-import { testUserLogin } from "../src/api/api";
+import * as SecureStore from "expo-secure-store";
+import { testUserLogin, testDriverLogin } from "../src/api/api";
 
 type UserContextType = {
   username: string | null;
   userId: string | null;
   role: string | null;
-  login: (username: string, password: string) => Promise<boolean>;
+  userLogin: (username: string, password: string) => Promise<boolean>;
+  driverLogin: (username: string, password: string) => Promise<boolean>;
   logout: () => void;
 };
 
@@ -17,7 +19,8 @@ const UserContext = createContext<UserContextType>({
   username: null,
   userId: null,
   role: null,
-  login: async () => false,
+  userLogin: async () => false,
+  driverLogin: async () => false,
   logout: () => {},
 });
 
@@ -26,11 +29,27 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
   const [userId, setUserId] = useState<string | null>(null);
   const [role, setRole] = useState<string | null>(null);
 
-  const login = async (email: any, password: any) => {
+  const userLogin = async (email: string, password: string) => {
     try {
-      const user = await testUserLogin(email, password);
-      if (user) {
-        setUsername("test");
+      const success = await testUserLogin(email, password);
+      if (success) {
+        setUsername(email);
+        // setUsername(user.username ?? null);
+        // setUserId(user.user_id?.toString() ?? null);
+        // setRole(user.role ?? null);
+        return true;
+      }
+      return false;
+    } catch {
+      return false;
+    }
+  };
+
+  const driverLogin = async (email: string, password: string) => {
+    try {
+      const success = await testDriverLogin(email, password);
+      if (success) {
+        setUsername(email);
         // setUsername(user.username ?? null);
         // setUserId(user.user_id?.toString() ?? null);
         // setRole(user.role ?? null);
@@ -44,12 +63,15 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
 
   const logout = async () => {
     setUsername(null);
-    setUserId(null);
-    setRole(null);
+    await SecureStore.deleteItemAsync("token");
+    // setUserId(null);
+    // setRole(null);
   };
 
   return (
-    <UserContext.Provider value={{ username, userId, role, login, logout }}>
+    <UserContext.Provider
+      value={{ username, userId, role, userLogin, driverLogin, logout }}
+    >
       {children}
     </UserContext.Provider>
   );
