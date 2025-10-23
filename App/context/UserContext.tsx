@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState } from "react";
 import * as SecureStore from "expo-secure-store";
-import { testUserLogin, testDriverLogin } from "../src/api/api";
+import { login } from "../src/api/api";
 
 type UserContextType = {
   username: string | null;
@@ -31,7 +31,7 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
 
   const userLogin = async (email: string, password: string) => {
     try {
-      const success = await testUserLogin(email, password);
+      const success = await login("user", email, password);
       if (success) {
         setUsername(email);
         // setUsername(user.username ?? null);
@@ -47,7 +47,7 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
 
   const driverLogin = async (email: string, password: string) => {
     try {
-      const success = await testDriverLogin(email, password);
+      const success = await login("driver", email, password);
       if (success) {
         setUsername(email);
         // setUsername(user.username ?? null);
