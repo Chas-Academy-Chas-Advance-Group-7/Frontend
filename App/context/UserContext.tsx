@@ -1,10 +1,11 @@
 import React, { createContext, useContext, useState } from "react";
 import * as SecureStore from "expo-secure-store";
 import { login } from "../src/api/api";
+import { jwtDecode } from "jwt-decode";
 
 type UserContextType = {
   username: string | null;
-  userId: string | null;
+  userId: number | null;
   role: string | null;
   userLogin: (username: string, password: string) => Promise<boolean>;
   driverLogin: (username: string, password: string) => Promise<boolean>;
@@ -13,6 +14,12 @@ type UserContextType = {
 
 type UserProviderProps = {
   children: React.ReactNode;
+};
+
+type DecodedToken = {
+  id: number;
+  email: string;
+  user_name: string;
 };
 
 const UserContext = createContext<UserContextType>({
@@ -26,37 +33,39 @@ const UserContext = createContext<UserContextType>({
 
 export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
   const [username, setUsername] = useState<string | null>(null);
-  const [userId, setUserId] = useState<string | null>(null);
+  const [userId, setUserId] = useState<number | null>(null);
   const [role, setRole] = useState<string | null>(null);
 
   const userLogin = async (email: string, password: string) => {
     try {
-      const success = await login("user", email, password);
-      if (success) {
+      const token = await login("user", email, password);
+      if (token) {
+        const decoded = jwtDecode<DecodedToken>(token);
+        // setUsername(decoded.user_name);
         setUsername(email);
-        // setUsername(user.username ?? null);
-        // setUserId(user.user_id?.toString() ?? null);
-        // setRole(user.role ?? null);
+        setUserId(decoded.id);
         return true;
       }
       return false;
-    } catch {
+    } catch (error) {
+      console.error(error);
       return false;
     }
   };
 
   const driverLogin = async (email: string, password: string) => {
     try {
-      const success = await login("driver", email, password);
-      if (success) {
+      const token = await login("driver", email, password);
+      if (token) {
+        const decoded = jwtDecode<DecodedToken>(token);
+        // setUsername(decoded.user_name);
         setUsername(email);
-        // setUsername(user.username ?? null);
-        // setUserId(user.user_id?.toString() ?? null);
-        // setRole(user.role ?? null);
+        setUserId(decoded.id);
         return true;
       }
       return false;
-    } catch {
+    } catch (error) {
+      console.error(error);
       return false;
     }
   };
