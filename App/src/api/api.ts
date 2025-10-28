@@ -57,7 +57,7 @@ export const userRegister = async () => {
         }),
       }
     );
-    if (!response.ok) throw new Error("Error: Could not add user");
+    if (!response.ok) throw new Error("Could not add user");
     return await response.json();
   } catch (error) {
     console.error(error);
@@ -78,9 +78,47 @@ export const driverRegister = async () => {
         }),
       }
     );
-    if (!response.ok) throw new Error("Error: Could not add user");
+    if (!response.ok) throw new Error("Could not add user");
     return await response.json();
   } catch (error) {
     console.error(error);
+  }
+};
+
+export const getSenderPackages = async (userId: number) => {
+  try {
+    const token = await SecureStore.getItemAsync("token");
+    const response = await fetch(
+      `${baseUrl}/user_portal/sender_route/all_packages/${userId}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    if (!response.ok) throw new Error("Could not fetch sender route packages");
+    return await response.json();
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+};
+
+export const getReceiverPackages = async (userId: number) => {
+  try {
+    const token = await SecureStore.getItemAsync("token");
+    const response = await fetch(
+      `${baseUrl}/user_portal/reciever_route/all_packages/${userId}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    if (!response.ok) throw new Error("Could not fetch sender route packages");
+    return await response.json();
+  } catch (error) {
+    console.error(error);
+    return null;
   }
 };

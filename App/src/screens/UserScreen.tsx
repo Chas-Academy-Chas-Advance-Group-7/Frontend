@@ -7,6 +7,8 @@ import TextButton from "../components/TextButton";
 import { colors } from "../styles/colors";
 import PackageList from "../components/PackageList";
 import WarningCard from "../components/WarningCard";
+import { getSenderPackages, getReceiverPackages } from "../api/api";
+import { useUser } from "../../context/UserContext";
 
 const UserScreen = () => {
   const [location, setLocation] = useState<Location.LocationObject | null>(
@@ -14,10 +16,31 @@ const UserScreen = () => {
   );
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [sendingView, setSendingView] = useState<boolean | undefined>(true);
+  const { userId } = useUser();
 
   const handleViewChange = () => {
     setSendingView((prev) => !prev);
   };
+
+  //Test för att hämta alla avsända paket
+  // useEffect(() => {
+  //   const fetchSenderPackages = async () => {
+  //     if (!userId) return;
+  //     const data = await getSenderPackages(userId);
+  //     if (data) console.log(data);
+  //   };
+  //   fetchSenderPackages();
+  // }, []);
+
+  //Test för att hämta alla inkommande paket
+  useEffect(() => {
+    const fetchReceiverPackages = async () => {
+      if (!userId) return;
+      const data = await getReceiverPackages(userId);
+      if (data) console.log(data);
+    };
+    fetchReceiverPackages();
+  }, []);
 
   useEffect(() => {
     const getCurrentLocation = async () => {
@@ -29,7 +52,6 @@ const UserScreen = () => {
       let location = await Location.getCurrentPositionAsync({});
       setLocation(location);
     };
-
     getCurrentLocation();
   }, []);
 

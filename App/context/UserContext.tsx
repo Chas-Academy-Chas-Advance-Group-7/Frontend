@@ -17,7 +17,7 @@ type UserProviderProps = {
 };
 
 type DecodedToken = {
-  id: number;
+  sub: number;
   email: string;
   user_name: string;
   role: string;
@@ -45,7 +45,7 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
         // setUsername(decoded.user_name);
         console.log(decoded);
         setUsername(email);
-        setUserId(decoded.id);
+        setUserId(decoded.sub);
         setRole(decoded.role);
         return true;
       }
@@ -63,7 +63,7 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
         const decoded = jwtDecode<DecodedToken>(token);
         // setUsername(decoded.user_name);
         setUsername(email);
-        setUserId(decoded.id);
+        setUserId(decoded.sub);
         setRole(decoded.role);
         return true;
       }
