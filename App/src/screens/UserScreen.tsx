@@ -7,7 +7,7 @@ import TextButton from "../components/TextButton";
 import { colors } from "../styles/colors";
 import PackageList from "../components/PackageList";
 import WarningCard from "../components/WarningCard";
-import { getSenderPackages, getReceiverPackages } from "../api/api";
+import { getSenderPackages, getReceiverPackages, getSingleReceiverPackage } from "../api/api";
 import { useUser } from "../../context/UserContext";
 
 const UserScreen = () => {
@@ -33,13 +33,23 @@ const UserScreen = () => {
   // }, []);
 
   //Test för att hämta alla inkommande paket
+  // useEffect(() => {
+  //   const fetchReceiverPackages = async () => {
+  //     if (!userId) return;
+  //     const data = await getReceiverPackages(userId);
+  //     if (data) console.log(data);
+  //   };
+  //   fetchReceiverPackages();
+  // }, []);
+
+  //Test för att hämta ett specifikt inkommande paket
   useEffect(() => {
-    const fetchReceiverPackages = async () => {
+    const fetchSingleReceiverPackage = async () => {
       if (!userId) return;
-      const data = await getReceiverPackages(userId);
+      const data = await getSingleReceiverPackage(userId);
       if (data) console.log(data);
     };
-    fetchReceiverPackages();
+    fetchSingleReceiverPackage();
   }, []);
 
   useEffect(() => {
