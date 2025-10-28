@@ -10,7 +10,7 @@ Detta är den mobila frontend-delen av **Team 7:s** projekt. Applikationen är b
 - **Expo** – för snabb utveckling och testning  
 - **React Navigation** – för hantering av navigering  
 - **Fetch** – för API-anrop  
-- **TypeScript** – logik och funktionalitet 
+- **TypeScript** – logik och funktionalitet  
 
 ## Mappstruktur
 
