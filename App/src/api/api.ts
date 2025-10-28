@@ -63,3 +63,24 @@ export const userRegister = async () => {
     console.error(error);
   }
 };
+
+export const driverRegister = async () => {
+  try {
+    const response = await fetch(
+      `${baseUrl}/login_portal/driver_login/register`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: "driver@chas.se", //dessa tre måste tas in som props senare
+          password: "123456",
+          name: "test",
+        }),
+      }
+    );
+    if (!response.ok) throw new Error("Error: Could not add user");
+    return await response.json();
+  } catch (error) {
+    console.error(error);
+  }
+};
