@@ -20,6 +20,7 @@ type DecodedToken = {
   id: number;
   email: string;
   user_name: string;
+  role: string;
 };
 
 const UserContext = createContext<UserContextType>({
@@ -42,8 +43,10 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
       if (token) {
         const decoded = jwtDecode<DecodedToken>(token);
         // setUsername(decoded.user_name);
+        console.log(decoded);
         setUsername(email);
         setUserId(decoded.id);
+        setRole(decoded.role);
         return true;
       }
       return false;
@@ -61,6 +64,7 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
         // setUsername(decoded.user_name);
         setUsername(email);
         setUserId(decoded.id);
+        setRole(decoded.role);
         return true;
       }
       return false;
@@ -72,9 +76,9 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
 
   const logout = async () => {
     setUsername(null);
+    setUserId(null);
+    setRole(null);
     await SecureStore.deleteItemAsync("token");
-    // setUserId(null);
-    // setRole(null);
   };
 
   return (
