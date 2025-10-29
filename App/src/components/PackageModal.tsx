@@ -9,10 +9,13 @@ const PackageModal = ({
   setModalVisible,
 }: {
   packageItem: {
-    package_id: number;
-    package_name: string;
-    package_temp: number;
-    package_humidity: number;
+    package_id?: number;
+    package_name?: string;
+    package_temp?: number;
+    package_humidity?: number;
+    package_latitude?: number;
+    package_longitude?: number;
+    id?: number;
   };
   modalVisible: boolean;
   setModalVisible: (visible: boolean) => void;

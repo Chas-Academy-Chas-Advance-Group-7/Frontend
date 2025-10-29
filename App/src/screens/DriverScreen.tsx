@@ -13,6 +13,7 @@ import * as Location from "expo-location";
 import DriverMapContainer from "../components/DriverMapContainer";
 import users from "../assets/users.json";
 import PackageList from "../components/PackageList";
+import { useUser } from "../../context/UserContext";
 
 type WarningLevel = "caution" | "danger" | "none";
 
@@ -42,6 +43,7 @@ const DriverScreen = () => {
   const [hasPermission, requestPermission] = useCameraPermissions();
   const isPermissionGranted = Boolean(hasPermission?.granted);
   const [showScanner, setShowScanner] = useState(false);
+  const { userId, role } = useUser();
 
   const handleScanPress = async () => {
     if (!isPermissionGranted) {
@@ -120,7 +122,7 @@ const DriverScreen = () => {
           title="Skanna paket"
           onPress={handleScanPress}
         />
-        <PackageList route="all" role="driver" />
+        <PackageList route="receiving" role={role} userId={userId} />
       </View>
     </ScrollView>
   );

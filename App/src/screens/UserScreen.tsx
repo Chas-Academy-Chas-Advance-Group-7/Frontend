@@ -7,7 +7,11 @@ import TextButton from "../components/TextButton";
 import { colors } from "../styles/colors";
 import PackageList from "../components/PackageList";
 import WarningCard from "../components/WarningCard";
-import { getSenderPackages, getReceiverPackages, getSingleReceiverPackage } from "../api/api";
+import {
+  getSenderPackages,
+  getReceiverPackages,
+  getSingleReceiverPackage,
+} from "../api/api";
 import { useUser } from "../../context/UserContext";
 
 const UserScreen = () => {
@@ -16,7 +20,7 @@ const UserScreen = () => {
   );
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [sendingView, setSendingView] = useState<boolean | undefined>(true);
-  const { userId } = useUser();
+  const { userId, role } = useUser();
 
   const handleViewChange = () => {
     setSendingView((prev) => !prev);
@@ -43,14 +47,14 @@ const UserScreen = () => {
   // }, []);
 
   //Test för att hämta ett specifikt inkommande paket
-  useEffect(() => {
-    const fetchSingleReceiverPackage = async () => {
-      if (!userId) return;
-      const data = await getSingleReceiverPackage(userId);
-      if (data) console.log(data);
-    };
-    fetchSingleReceiverPackage();
-  }, []);
+  // useEffect(() => {
+  //   const fetchSingleReceiverPackage = async () => {
+  //     if (!userId) return;
+  //     const data = await getSingleReceiverPackage(userId);
+  //     if (data) console.log(data);
+  //   };
+  //   fetchSingleReceiverPackage();
+  // }, []);
 
   useEffect(() => {
     const getCurrentLocation = async () => {
@@ -108,7 +112,7 @@ const UserScreen = () => {
             warningLevel="none"
             message="Du har ingar varningar."
           />
-          <PackageList route="sending" role="user" />
+          <PackageList route="sending" role={role} userId={userId} />
         </View>
       ) : (
         <View>
@@ -127,7 +131,7 @@ const UserScreen = () => {
             warningLevel="caution"
             message="Temperaturen är aningen förhöjd, men fortfarande inom gränsvärdet."
           />
-          <PackageList route="receiving" role="user" />
+          <PackageList route="receiving" role={role} userId={userId} />
         </View>
       )}
     </ScrollView>

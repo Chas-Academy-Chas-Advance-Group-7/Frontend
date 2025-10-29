@@ -3,20 +3,24 @@ import { useState } from "react";
 import { colors } from "../styles/colors";
 import PackageModal from "./PackageModal";
 import useAnimation from "../hooks/useAnimation";
+import { useUser } from "../../context/UserContext";
 
 const PackageListCard = ({
   packageItem,
 }: {
   packageItem: {
-    package_id: number;
-    package_name: string;
-    package_temp: number;
-    package_humidity: number;
-    package_delivery_address?: string;
+    package_id?: number;
+    package_name?: string;
+    package_temp?: number;
+    package_humidity?: number;
+    package_latitude?: number;
+    package_longitude?: number;
+    id?: number;
   };
 }) => {
   const [modalVisible, setModalVisible] = useState<boolean>(false);
   const { opacityValue, fadeIn, fadeOut } = useAnimation();
+  const { role } = useUser();
 
   return (
     <Pressable
@@ -35,8 +39,13 @@ const PackageListCard = ({
           },
         ]}
       >
-        <Text style={styles.listItemName}>{packageItem.package_name}</Text>
-        <Text style={styles.listItemAddress}>{packageItem.package_delivery_address}</Text>
+        <Text style={styles.listItemName}>
+          {role === "user" ? packageItem.id : packageItem.package_id}
+        </Text>
+        <Text style={styles.listItemAddress}>
+          {/* {packageItem.package_delivery_address} */}
+          Address
+        </Text>
         <PackageModal
           packageItem={packageItem}
           modalVisible={modalVisible}
