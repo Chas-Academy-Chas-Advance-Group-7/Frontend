@@ -1,12 +1,19 @@
 import { StyleSheet, Text, Pressable, Animated } from "react-native";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { colors } from "../styles/colors";
 import PackageModal from "./PackageModal";
 import useAnimation from "../hooks/useAnimation";
 import { useUser } from "../../context/UserContext";
+import { getSingleReceiverPackage } from "../api/api";
+
+interface SinglePackage {
+  sender_name?: string;
+}
 
 const PackageListCard = ({
   packageItem,
+  route,
+  userId,
 }: {
   packageItem: {
     package_id?: number;
@@ -17,10 +24,30 @@ const PackageListCard = ({
     package_longitude?: number;
     id?: number;
   };
+  route: string;
+  userId: number | null;
 }) => {
   const [modalVisible, setModalVisible] = useState<boolean>(false);
+  const [singlePackage, setSinglePackage] = useState<SinglePackage[]>([]);
   const { opacityValue, fadeIn, fadeOut } = useAnimation();
   const { role } = useUser();
+
+  useEffect(() => {
+    const fetchSinglePackage = async () => {
+      if (route === "receiving") {
+        let packageId;
+        if (role === "user") {
+          packageId = packageItem.id;
+        } else {
+          packageId = packageItem.package_id;
+        }
+        const singlePackage = await getSingleReceiverPackage(userId, packageId);
+        if (singlePackage) setSinglePackage(singlePackage);
+        console.log(singlePackage);
+      } else return;
+    };
+    fetchSinglePackage();
+  }, [route, role, userId, packageItem]);
 
   return (
     <Pressable
@@ -40,11 +67,17 @@ const PackageListCard = ({
         ]}
       >
         <Text style={styles.listItemName}>
-          {role === "user" ? packageItem.id : packageItem.package_id}
+          {role === "user"
+            ? `Paket ${packageItem.id}`
+            : `Paket ${packageItem.package_id}`}
         </Text>
         <Text style={styles.listItemAddress}>
           {/* {packageItem.package_delivery_address} */}
-          Address
+          {route === "receiving"
+            ? `Avsändare: ${singlePackage[0]?.sender_name ?? "Okänd"}`
+            : route === "sending"
+            ? "Mottagare: Bla bla"
+            : "Address: Bla bla"}
         </Text>
         <PackageModal
           packageItem={packageItem}

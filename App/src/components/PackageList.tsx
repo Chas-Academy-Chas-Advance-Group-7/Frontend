@@ -61,7 +61,9 @@ const PackageList = ({ route, role, userId }: PackageListProps) => {
         data={packages}
         scrollEnabled={false}
         keyExtractor={(item, index) => index.toString()}
-        renderItem={({ item }) => <PackageListCard packageItem={item} />}
+        renderItem={({ item }) => (
+          <PackageListCard packageItem={item} route={route} userId={userId} />
+        )}
       />
     </View>
   );

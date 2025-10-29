@@ -123,11 +123,14 @@ export const getReceiverPackages = async (userId: number) => {
   }
 };
 
-export const getSingleReceiverPackage = async (userId: number) => {
+export const getSingleReceiverPackage = async (
+  userId: number | null,
+  packageId?: number
+) => {
   try {
     const token = await SecureStore.getItemAsync("token");
     const response = await fetch(
-      `${baseUrl}/user_portal/reciever_route/single_package/${userId}/1`,
+      `${baseUrl}/user_portal/reciever_route/single_package/${userId}/${packageId}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
