@@ -1,10 +1,10 @@
-import { Button, StyleSheet, View, Text } from "react-native";
+import { Button, StyleSheet, View, Text, Alert } from "react-native";
 import HeyDriver from "../components/HeyDriver";
 import Header from "../components/Header";
 import WarningCard from "../components/WarningCard";
 import Warningheadline from "../components/Warningheadline";
 import { useCameraPermissions } from "expo-camera";
-import QRCodeScanner from "../components/QRCodeScanner";
+import QRCodeScanner, { QRData } from "../components/QRCodeScanner";
 import { ScrollView } from "react-native-gesture-handler";
 import { useState, useEffect } from "react";
 import GradientButton from "../components/GradientButton";
@@ -14,6 +14,10 @@ import DriverMapContainer from "../components/DriverMapContainer";
 import users from "../assets/users.json";
 import PackageList from "../components/PackageList";
 import { useUser } from "../../context/UserContext";
+import AlertModal from "../components/AlertModal";
+import { NativeSyntheticEvent } from "react-native";
+
+
 
 type WarningLevel = "caution" | "danger" | "none";
 
@@ -39,10 +43,20 @@ const fakeData: WarningData[] = [
   },
 ];
 
-const DriverScreen = () => {
+const DriverScreen: React.FC = () => {
+  const [scannedData, setScannedData] = useState<QRData| null>(null);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [showScanner, setShowScanner] = useState(false);
+
+   const handleScan = ( data: QRData) => {
+    setScannedData(data);  
+    setModalVisible(true);
+
+  };
+
   const [hasPermission, requestPermission] = useCameraPermissions();
   const isPermissionGranted = Boolean(hasPermission?.granted);
-  const [showScanner, setShowScanner] = useState(false);
+
   const { userId, role } = useUser();
 
   const handleScanPress = async () => {
@@ -53,13 +67,17 @@ const DriverScreen = () => {
     setShowScanner(true);
   };
 
+  const handleCloseModal = () => {
+    setModalVisible(false);
+    setShowScanner(false);
+    setScannedData(null);
+  }
+
   const [location, setLocation] = useState<Location.LocationObject | null>(
     null
   );
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
-  const user = users.find((user) => user.role === "driver");
-  let packages = user?.packages;
 
   useEffect(() => {
     const getCurrentLocation = async () => {
@@ -82,15 +100,24 @@ const DriverScreen = () => {
     text = JSON.stringify(location);
   }
 
+  const user = users.find((user) => user.role === "driver");
+  let packages = user?.packages;
+
+  
   if (showScanner) {
     return (
       <View style={styles.container}>
-        <QRCodeScanner />
-        <GradientButton
+        <QRCodeScanner onScan={handleScan}/>
+        <AlertModal
+          visible={modalVisible}
+          data={scannedData}
+          onClose={handleCloseModal}
+        />
+        {/* <GradientButton
           colors={[colors.buttonGradientLeft, colors.buttonGradientRight]}
           title="Stäng kamera"
           onPress={() => setShowScanner(false)}
-        />
+        /> */}
       </View>
     );
   }

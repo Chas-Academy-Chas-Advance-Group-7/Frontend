@@ -1,11 +1,32 @@
-import { CameraView } from "expo-camera";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet,View } from "react-native";
 import React from "react";
+import { CameraView, BarcodeScanningResult } from "expo-camera";
 import { colors } from "../styles/colors";
 
+export interface QRData {
+    id?: string;
+    raw?: string;
+}
 
+export interface QRCodeScannerProps {
+    onScan: (data: QRData) => void;
+}
 
-const QRCodeScanner = () => {
+const QRCodeScanner: React.FC<QRCodeScannerProps> = ({ onScan}) => {
+    const handleRead = (data: string) => {
+        let parsed: QRData;
+        try {
+            parsed = JSON.parse(data);
+        } catch {
+            parsed = { raw: data };
+        }
+        onScan(parsed);
+    }
+    
+const handleBarcodeScanned = ({ data }: BarcodeScanningResult) => {
+    if (!data) return;
+    handleRead(data);
+  };
     
   return (
     <View style={styles.container}> 
@@ -17,10 +38,7 @@ const QRCodeScanner = () => {
                 barcodeTypes: ['qr'],
             }
         }
-        onBarcodeScanned={
-            ({ data }) => {
-                console.log('Scanned QR code with data:', data);
-            }}
+        onBarcodeScanned={handleBarcodeScanned}
         />
         </View>
         )
