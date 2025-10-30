@@ -144,3 +144,22 @@ export const getSingleReceiverPackage = async (
     return null;
   }
 };
+
+export const truckRegister = async (driverId: number, truckId: number) => {
+  try {
+    const token = await SecureStore.getItemAsync("token");
+    const response = await fetch(
+      `${baseUrl}/employee_portal/driver_routes/register_to_truck/${driverId}/${truckId}`,
+      {
+        method: "PATCH",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    if (!response.ok) throw new Error("Could not register driver to truck");
+    return await response.json();
+  } catch (error) {
+    console.error(error);
+  }
+};

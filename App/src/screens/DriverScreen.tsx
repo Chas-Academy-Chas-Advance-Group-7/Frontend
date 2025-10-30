@@ -16,8 +16,7 @@ import PackageList from "../components/PackageList";
 import { useUser } from "../../context/UserContext";
 import AlertModal from "../components/AlertModal";
 import { NativeSyntheticEvent } from "react-native";
-
-
+import { truckRegister } from "../api/api";
 
 type WarningLevel = "caution" | "danger" | "none";
 
@@ -44,14 +43,13 @@ const fakeData: WarningData[] = [
 ];
 
 const DriverScreen: React.FC = () => {
-  const [scannedData, setScannedData] = useState<QRData| null>(null);
+  const [scannedData, setScannedData] = useState<QRData | null>(null);
   const [modalVisible, setModalVisible] = useState(false);
   const [showScanner, setShowScanner] = useState(false);
 
-   const handleScan = ( data: QRData) => {
-    setScannedData(data);  
+  const handleScan = (data: QRData) => {
+    setScannedData(data);
     setModalVisible(true);
-
   };
 
   const [hasPermission, requestPermission] = useCameraPermissions();
@@ -71,13 +69,19 @@ const DriverScreen: React.FC = () => {
     setModalVisible(false);
     setShowScanner(false);
     setScannedData(null);
-  }
+  };
 
   const [location, setLocation] = useState<Location.LocationObject | null>(
     null
   );
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
+  // useEffect(() => {
+  //   const registerToTruck = async () => {
+  //     truckRegister(2, 1);
+  //   };
+  //   registerToTruck();
+  // }, []);
 
   useEffect(() => {
     const getCurrentLocation = async () => {
@@ -103,11 +107,10 @@ const DriverScreen: React.FC = () => {
   const user = users.find((user) => user.role === "driver");
   let packages = user?.packages;
 
-  
   if (showScanner) {
     return (
       <View style={styles.container}>
-        <QRCodeScanner onScan={handleScan}/>
+        <QRCodeScanner onScan={handleScan} />
         <AlertModal
           visible={modalVisible}
           data={scannedData}
