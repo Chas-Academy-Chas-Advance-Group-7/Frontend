@@ -111,11 +111,11 @@ const DriverScreen: React.FC = () => {
           data={scannedData}
           onClose={handleCloseModal}
         />
-        {/* <GradientButton
+        <GradientButton
           colors={[colors.buttonGradientLeft, colors.buttonGradientRight]}
           title="Stäng kamera"
           onPress={() => setShowScanner(false)}
-        /> */}
+        />
       </View>
     );
   }
