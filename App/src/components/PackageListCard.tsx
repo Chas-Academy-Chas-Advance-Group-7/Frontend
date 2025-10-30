@@ -34,18 +34,15 @@ const PackageListCard = ({
 
   useEffect(() => {
     const fetchSinglePackage = async () => {
-      if (route === "receiving") {
-        let packageId;
-        if (role === "user") {
-          packageId = packageItem.id;
-        } else {
-          packageId = packageItem.package_id;
-        }
-        const singlePackage = await getSingleReceiverPackage(userId, packageId);
-        if (singlePackage) setSinglePackage(singlePackage);
-        console.log(singlePackage);
-      } else return;
+      if (route !== "receiving" || !userId || !role) return;
+
+      let packageId = role === "user" ? packageItem.id : packageItem.package_id;
+      if (!packageId) return;
+
+      const singlePackage = await getSingleReceiverPackage(userId, packageId);
+      if (singlePackage) setSinglePackage(singlePackage);
     };
+
     fetchSinglePackage();
   }, [route, role, userId, packageItem]);
 
